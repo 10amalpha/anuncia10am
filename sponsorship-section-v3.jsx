@@ -32,7 +32,6 @@ export default function SponsorshipSection() {
         "Logo y mensaje de marca visible durante todo el episodio completo",
         "Interactividad directa: Inclusión de códigos QR y enlaces de acción",
         "Exclusividad por categoría: Sin competencia en el mismo bloque visual",
-        "Frecuencia de impacto: 4 episodios por semana",
       ],
       pricing: [
         { label: "MENSUAL BASE",        price: "$1,000", sub: "USD / Mes",              highlight: false },
