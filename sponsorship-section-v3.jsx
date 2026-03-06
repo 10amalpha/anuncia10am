@@ -189,6 +189,15 @@ export default function SponsorshipSection() {
           </div>
         </div>
 
+        {/* ── KILLER PHRASE ── */}
+        <div style={{ textAlign: "center", margin: "48px 0" }}>
+          <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,#ffcc0033,transparent)", marginBottom: "32px" }} />
+          <p style={{ fontSize: isMobile ? "18px" : "24px", fontWeight: "900", color: "#fff", margin: 0, fontFamily: "Georgia,serif", lineHeight: "1.5" }}>
+            Aquí no se venden vistas.<br />Se vende <span style={{ color: "#ffcc00" }}>confianza</span>.
+          </p>
+          <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,#ffcc0033,transparent)", marginTop: "32px" }} />
+        </div>
+
         {/* ── SCARCITY / FOMO ── */}
         <div style={{ marginBottom: "48px", textAlign: "center" }}>
           <div style={{ background: "linear-gradient(135deg,#1a1000,#0f0a00)", border: "1px solid #ffcc0022", borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
