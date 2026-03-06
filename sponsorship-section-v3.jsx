@@ -265,6 +265,30 @@ export default function SponsorshipSection() {
               </div>
             ))}
           </div>
+
+          {/* Testimonials */}
+          <div style={{ marginTop: "32px" }}>
+            <div style={{ textAlign: "center", marginBottom: "20px" }}>
+              <div style={{ fontSize: "9px", color: "#44cc88", letterSpacing: "4px", fontWeight: "700", marginBottom: "6px" }}>LO QUE DICE LA AUDIENCIA</div>
+              <p style={{ color: "#555", fontSize: "12px", letterSpacing: "1px", margin: 0 }}>Suscriptores de pago · Substack</p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px" }}>
+              {[
+                { name: "Felipe Castrillón", badge: "Paid", quote: "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación." },
+                { name: "Juan D", badge: "Paid", quote: "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven." },
+                { name: "Jose Cardenas", badge: "Paid", quote: "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest." },
+              ].map((t, i) => (
+                <div key={i} style={{ background: "#0a0f0a", border: "1px solid #44cc8822", borderRadius: "10px", padding: "22px 20px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                  <div style={{ fontSize: "22px", color: "#44cc8844" }}>"</div>
+                  <p style={{ fontSize: "12px", color: "#aaa", lineHeight: "1.7", margin: 0, fontFamily: "Georgia,serif", fontStyle: "italic", flex: 1 }}>{t.quote}</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "4px" }}>
+                    <div style={{ fontSize: "12px", fontWeight: "700", color: "#fff" }}>{t.name}</div>
+                    <div style={{ background: "#44cc8822", border: "1px solid #44cc8844", borderRadius: "3px", padding: "2px 6px", fontSize: "9px", color: "#44cc88", fontWeight: "700", letterSpacing: "1px" }}>{t.badge}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── CTA ── */}
