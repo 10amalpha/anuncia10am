@@ -93,13 +93,15 @@ export default function SponsorshipSection() {
 
         {/* ── EPISODE COUNTER ── */}
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: "#0a0a0a", border: "1px solid #ffcc0022", borderRadius: "8px", padding: "12px 28px" }}>
-            <div style={{ fontSize: "28px", fontWeight: "900", color: "#ffcc00" }}>198</div>
-            <div style={{ textAlign: "left" }}>
-              <div style={{ fontSize: "11px", fontWeight: "700", color: "#fff", letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
-              <div style={{ fontSize: "10px", color: "#555", marginTop: "2px" }}>desde 2021 · sin interrupciones</div>
+          <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: "#0a0a0a", border: "1px solid #ffcc0022", borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: "#ffcc00" }}>198</div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "11px", fontWeight: "700", color: "#fff", letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
+                <div style={{ fontSize: "10px", color: "#555", marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
 
         {/* ── BLOQUE 1: PODCAST — donde sale el contenido del sponsor ── */}
