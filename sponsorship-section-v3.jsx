@@ -78,7 +78,10 @@ export default function SponsorshipSection() {
           Patrocina 10AMPRO
         </h1>
         <p style={{ fontSize: "13px", color: "#6b7280", margin: 0 }}>
-          Rate Card & Media Kit 2026 · El podcast de finanzas e IA para LATAM
+          Rate Card & Media Kit 2026
+        </p>
+        <p style={{ fontSize: "13px", color: "#aaa", margin: "12px auto 0", maxWidth: "520px", lineHeight: "1.6", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
+          "La droga más peligrosa es un salario cómodo. Optimiza tu dieta de información y reprograma tu cerebro con modelos mentales de inversión táctica."
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "16px", fontSize: "12px" }}>
           <a href="https://10am.pro" target="_blank" rel="noopener noreferrer" style={{ color: "#6b7280", textDecoration: "none" }}>10am.pro</a>
