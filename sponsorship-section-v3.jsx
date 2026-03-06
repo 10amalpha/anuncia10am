@@ -182,13 +182,13 @@ export default function SponsorshipSection() {
         <div style={{ marginBottom: "48px", textAlign: "center" }}>
           <div style={{ background: "linear-gradient(135deg,#1a1000,#0f0a00)", border: "1px solid #ffcc0022", borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
             <div style={{ fontSize: "9px", color: "#ff4444", letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>⏳ DISPONIBILIDAD LIMITADA</div>
-            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: "#fff", margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 4 espacios de patrocinio por episodio</h3>
+            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: "#fff", margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 2 espacios de patrocinio por episodio</h3>
             <p style={{ fontSize: "13px", color: "#777", margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
-              Cada episodio tiene un máximo de 4 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
+              Cada episodio tiene un máximo de 2 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
               {[
-                { value: "4", label: "SLOTS POR EPISODIO", sub: "máximo por transmisión" },
+                { value: "2", label: "SLOTS POR EPISODIO", sub: "máximo por transmisión" },
                 { value: "54", label: "EPISODIOS EN 2026", sub: "programados este año" },
                 { value: "1", label: "MARCA POR CATEGORÍA", sub: "exclusividad garantizada" },
               ].map((item) => (
