@@ -178,6 +178,33 @@ export default function SponsorshipSection() {
           </div>
         </div>
 
+        {/* ── SCARCITY / FOMO ── */}
+        <div style={{ marginBottom: "48px", textAlign: "center" }}>
+          <div style={{ background: "linear-gradient(135deg,#1a1000,#0f0a00)", border: "1px solid #ffcc0022", borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
+            <div style={{ fontSize: "9px", color: "#ff4444", letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>⏳ DISPONIBILIDAD LIMITADA</div>
+            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: "#fff", margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 4 espacios de patrocinio por episodio</h3>
+            <p style={{ fontSize: "13px", color: "#777", margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
+              Cada episodio tiene un máximo de 4 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
+              {[
+                { value: "4", label: "SLOTS POR EPISODIO", sub: "máximo por transmisión" },
+                { value: "54", label: "EPISODIOS EN 2026", sub: "programados este año" },
+                { value: "1", label: "MARCA POR CATEGORÍA", sub: "exclusividad garantizada" },
+              ].map((item) => (
+                <div key={item.label} style={{ background: "#0a0a0a", border: "1px solid #2a2a2a", borderRadius: "10px", padding: "18px 14px" }}>
+                  <div style={{ fontSize: "30px", fontWeight: "900", color: "#ff4444" }}>{item.value}</div>
+                  <div style={{ fontSize: "9px", color: "#888", letterSpacing: "2px", fontWeight: "700", marginTop: "6px" }}>{item.label}</div>
+                  <div style={{ fontSize: "10px", color: "#444", marginTop: "4px" }}>{item.sub}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: "11px", color: "#ff444499", letterSpacing: "1px", margin: 0 }}>
+              Los espacios se asignan por orden de llegada. Reserva tu categoría antes de que lo haga tu competencia.
+            </p>
+          </div>
+        </div>
+
         {/* ── TIERS ── */}
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "20px", marginBottom: "48px" }}>
           {tiers.map((tier) => (
