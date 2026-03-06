@@ -54,10 +54,9 @@ export default function SponsorshipSection() {
   ];
 
   const podcastPlatforms = [
-    { platform: "YouTube",  followers: "23,000+", icon: "▶", color: "#ff0000" },
-    { platform: "Spotify",  followers: "35,000+", icon: "♫", color: "#1db954" },
-    { platform: "Substack", followers: "3,700+",  icon: "✉", color: "#ff6719" },
-    { platform: "WhatsApp", followers: "1,000+",  icon: "◉", color: "#25d366" },
+    { platform: "YouTube",        followers: "23,000+", icon: "▶", color: "#ff0000" },
+    { platform: "Spotify",        followers: "35,000+", icon: "♫", color: "#1db954" },
+    { platform: "Apple Podcasts", followers: "4,800+",  icon: "🎧", color: "#a855f7" },
   ];
 
   const shortsPlatforms = [
@@ -121,9 +120,9 @@ export default function SponsorshipSection() {
               </div>
             </div>
             {/* Platform grid */}
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)" }}>
               {podcastPlatforms.map((p, i) => (
-                <div key={p.platform} style={{ padding: "18px 16px", borderRight: (!isMobile && i < 3) ? "1px solid #1a1a1a" : i % 2 === 0 && isMobile ? "1px solid #1a1a1a" : "none", borderBottom: isMobile && i < 2 ? "1px solid #1a1a1a" : "none", textAlign: "center" }}>
+                <div key={p.platform} style={{ padding: "18px 16px", borderRight: (!isMobile && i < 2) ? "1px solid #1a1a1a" : "none", borderBottom: isMobile && i < 2 ? "1px solid #1a1a1a" : "none", textAlign: "center" }}>
                   <div style={{ fontSize: "20px", color: p.color, marginBottom: "8px", opacity: 0.8 }}>{p.icon}</div>
                   <div style={{ fontSize: "18px", fontWeight: "900", color: "#fff", marginBottom: "4px" }}>{p.followers}</div>
                   <div style={{ fontSize: "10px", color: "#555", letterSpacing: "2px" }}>{p.platform.toUpperCase()}</div>
