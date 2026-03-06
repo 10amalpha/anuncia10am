@@ -273,9 +273,9 @@ export default function SponsorshipSection() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px" }}>
               {[
-                { name: "Felipe Castrillón", badge: "Paid", quote: "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación." },
-                { name: "Juan D", badge: "Paid", quote: "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven." },
-                { name: "Jose Cardenas", badge: "Paid", quote: "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest." },
+                { name: "Felipe Castrillón", badge: "Paid Subscriber · Substack", quote: "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación." },
+                { name: "Juan D", badge: "Paid Subscriber · Substack", quote: "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven." },
+                { name: "Jose Cardenas", badge: "Paid Subscriber · Substack", quote: "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest." },
               ].map((t, i) => (
                 <div key={i} style={{ background: "#0a0f0a", border: "1px solid #44cc8822", borderRadius: "10px", padding: "22px 20px", display: "flex", flexDirection: "column", gap: "14px" }}>
                   <div style={{ fontSize: "22px", color: "#44cc8844" }}>"</div>
