@@ -181,7 +181,7 @@ export default function SponsorshipSection() {
             <p style={{ fontSize: "13px", color: "#777", margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
               Cada episodio tiene un máximo de 2 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
               {[
                 { value: "2", label: "SLOTS POR EPISODIO", sub: "máximo por transmisión" },
                 { value: "54", label: "EPISODIOS EN 2026", sub: "programados este año" },
