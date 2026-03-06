@@ -56,7 +56,7 @@ export default function SponsorshipSection() {
   const podcastPlatforms = [
     { platform: "YouTube",        followers: "23,000+", icon: "▶", color: "#ff0000" },
     { platform: "Spotify",        followers: "35,000+", icon: "♫", color: "#1db954" },
-    { platform: "Apple Podcasts", followers: "4,800+",  icon: "🎧", color: "#a855f7" },
+    { platform: "Apple Podcasts", followers: "6,000+",  icon: "🎧", color: "#a855f7" },
   ];
 
   const shortsPlatforms = [
@@ -109,8 +109,8 @@ export default function SponsorshipSection() {
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
                   { v: "1–1.5h", l: "DURACIÓN EP." },
-                  { v: "4/sem",  l: "EPISODIOS" },
-                  { v: "85%",    l: "RETENCIÓN" },
+                  { v: "1/sem",  l: "EPISODIOS" },
+                  { v: "23:23",    l: "AVG WATCH TIME" },
                 ].map(s => (
                   <div key={s.l} style={{ background: "#0a0a0a", border: "1px solid #2a2a2a", borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: "#fff" }}>{s.v}</div>
