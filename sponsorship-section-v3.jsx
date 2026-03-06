@@ -17,9 +17,6 @@ export default function SponsorshipSection() {
       includes: [
         "Episodio completo (60–90 min) en formato video + audio",
         "Distribución en YouTube, Spotify, Apple Podcasts y todas las plataformas",
-        "5 clips cortos optimizados para TikTok, Instagram Reels y X",
-        "Mención en newsletter Substack (3,700+ suscriptores)",
-        "Promoción en todos los canales sociales del ecosistema 10AMPRO",
         "IFrame con logo del aliado durante todo el episodio",
       ],
       pricing: [
@@ -137,7 +134,7 @@ export default function SponsorshipSection() {
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
             <div style={{ fontSize: "9px", color: "#44cc88", letterSpacing: "4px", fontWeight: "700" }}>📱 SHORTS</div>
             <div style={{ flex: 1, height: "1px", background: "#1a1a1a" }} />
-            <div style={{ fontSize: "10px", color: "#555" }}>reach adicional · distribución orgánica</div>
+            <a href="https://10ampro-shorts-analytics.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "10px", color: "#44cc88", textDecoration: "none", letterSpacing: "1px" }}>ver analytics en vivo ↗</a>
           </div>
           <div style={{ background: "linear-gradient(135deg,#0a1a0f,#080f08)", border: "1px solid #44cc8822", borderRadius: "14px", overflow: "hidden" }}>
             <div style={{ padding: "20px 28px", borderBottom: "1px solid #1a1a1a", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
