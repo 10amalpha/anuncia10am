@@ -1,6 +1,124 @@
 'use client';
 import { useState, useEffect } from "react";
 
+function SponsorLogin() {
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
+
+  const creds = {
+    wenia: { pass: "wenia", url: "https://wenia-dashboard.vercel.app" },
+  };
+
+  const handleLogin = () => {
+    const key = user.toLowerCase().trim();
+    if (creds[key] && creds[key].pass === pass) {
+      window.open(creds[key].url, "_blank");
+      setError("");
+      setUser("");
+      setPass("");
+      setShow(false);
+    } else {
+      setError("Credenciales incorrectas");
+    }
+  };
+
+  if (!show) {
+    return (
+      <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <button
+          onClick={() => setShow(true)}
+          style={{
+            background: "none", border: "1px solid #ffffff15",
+            color: "#555", fontSize: 10, fontWeight: 600,
+            letterSpacing: "2px", padding: "10px 24px",
+            borderRadius: 6, cursor: "pointer",
+            fontFamily: "'Courier New',monospace",
+            textTransform: "uppercase",
+            transition: "all 0.2s",
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.borderColor = "#ffcc0044"; e.currentTarget.style.color = "#ffcc00"; }}
+          onMouseOut={(e) => { e.currentTarget.style.borderColor = "#ffffff15"; e.currentTarget.style.color = "#555"; }}
+        >
+          🔒 Área de Sponsors
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      maxWidth: 340, margin: "0 auto 40px", padding: "24px",
+      background: "#0a0a0a", border: "1px solid #ffffff10",
+      borderRadius: 12,
+    }}>
+      <div style={{
+        fontSize: 11, fontWeight: 700, letterSpacing: "2px",
+        color: "#ffcc00", textTransform: "uppercase",
+        marginBottom: 16, textAlign: "center",
+        fontFamily: "'Courier New',monospace",
+      }}>
+        🔒 Acceso Sponsors
+      </div>
+      <input
+        type="text"
+        placeholder="Usuario"
+        value={user}
+        onChange={(e) => { setUser(e.target.value); setError(""); }}
+        onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+        style={{
+          width: "100%", background: "#111", border: "1px solid #ffffff15",
+          color: "#eee", padding: "10px 14px", borderRadius: 6,
+          fontSize: 13, marginBottom: 10, outline: "none",
+          fontFamily: "'Courier New',monospace",
+          boxSizing: "border-box",
+        }}
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={pass}
+        onChange={(e) => { setPass(e.target.value); setError(""); }}
+        onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+        style={{
+          width: "100%", background: "#111", border: "1px solid #ffffff15",
+          color: "#eee", padding: "10px 14px", borderRadius: 6,
+          fontSize: 13, marginBottom: 10, outline: "none",
+          fontFamily: "'Courier New',monospace",
+          boxSizing: "border-box",
+        }}
+      />
+      {error && (
+        <div style={{ fontSize: 11, color: "#ff4444", marginBottom: 10, textAlign: "center" }}>
+          {error}
+        </div>
+      )}
+      <button
+        onClick={handleLogin}
+        style={{
+          width: "100%", background: "linear-gradient(135deg,#1a1400,#141000)",
+          color: "#ffcc00", border: "1px solid #ffcc0033",
+          padding: "10px", fontSize: 11, fontWeight: 700,
+          letterSpacing: "2px", borderRadius: 6,
+          cursor: "pointer", fontFamily: "'Courier New',monospace",
+        }}
+      >
+        ENTRAR →
+      </button>
+      <div
+        onClick={() => { setShow(false); setError(""); }}
+        style={{
+          fontSize: 10, color: "#444", textAlign: "center",
+          marginTop: 12, cursor: "pointer",
+        }}
+      >
+        cancelar
+      </div>
+    </div>
+  );
+}
+
 export default function SponsorshipSection() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -314,6 +432,9 @@ export default function SponsorshipSection() {
             </div>
           </div>
         </div>
+
+        {/* ── SPONSOR LOGIN ── */}
+        <SponsorLogin />
 
         {/* ── CTA ── */}
         <div style={{ textAlign: "center" }}>
