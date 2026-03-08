@@ -169,8 +169,10 @@ export default function SponsorshipSection() {
 
   const podcastPlatforms = [
     { platform: "YouTube",        followers: "23,000+", icon: "▶", color: "#ff0000" },
-    { platform: "Spotify",        followers: "35,000+", icon: "♫", color: "#1db954" },
+    { platform: "Spotify",        followers: "38,600+", icon: "♫", color: "#1db954" },
     { platform: "Apple Podcasts", followers: "6,000+",  icon: "🎧", color: "#a855f7" },
+    { platform: "X",              followers: "5,400+",  icon: "𝕏", color: "#e4e4e7" },
+    { platform: "Substack",       followers: "3,500+",  icon: "✉", color: "#ff6719" },
   ];
 
   const shortsPlatforms = [
@@ -234,7 +236,7 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: "1px solid #1a1a1a", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: "#ffcc00", letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: "#ffcc00" }}>62,700+ <span style={{ fontSize: "13px", color: "#888", fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: "#ffcc00" }}>76,500+ <span style={{ fontSize: "13px", color: "#888", fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
