@@ -122,6 +122,38 @@ function SponsorLogin() {
 export default function SponsorshipSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [ytSubs, setYtSubs] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
+
+  const t = darkMode ? {
+    bg: "#000", text: "#e8e8e8", heading: "#fff", muted: "#6b7280", subtle: "#555",
+    card: "#0f0f0f", cardAlt: "#0a0a0a", border: "#1a1a1a", borderLight: "#2a2a2a",
+    accent: "#ffcc00", green: "#44cc88", red: "#ff4444",
+    quoteText: "#aaa", footerText: "#333",
+    loginBg: "#0a0a0a", loginBorder: "#ffffff10",
+    podcastGrad: "linear-gradient(135deg,#0f1200,#0a0f0a)", podcastBorder: "#ffcc0022",
+    shortsGrad: "linear-gradient(135deg,#0a1a0f,#080f08)", shortsBorder: "#44cc8822",
+    scarcityGrad: "linear-gradient(135deg,#1a1000,#0f0a00)", scarcityBorder: "#ffcc0022",
+    ctaGrad: "linear-gradient(135deg,#1a1400,#141000)",
+    tierBorder: (accent) => `${accent}33`, tierHighlightBg: (accent) => `${accent}10`,
+    sponsorCardBg: "#0f0f0f", sponsorCardBorder: "#1e1e1e",
+    testimonialBg: "#0a0f0a", testimonialBorder: "#44cc8822",
+    barBg: "#111",
+  } : {
+    bg: "#ffffff", text: "#1a1a1a", heading: "#000", muted: "#6b7280", subtle: "#888",
+    card: "#f8f8f8", cardAlt: "#f0f0f0", border: "#e0e0e0", borderLight: "#d0d0d0",
+    accent: "#b8960f", green: "#1a8a54", red: "#cc3333",
+    quoteText: "#555", footerText: "#999",
+    loginBg: "#f5f5f5", loginBorder: "#e0e0e0",
+    podcastGrad: "linear-gradient(135deg,#fafaf0,#f5f8f5)", podcastBorder: "#b8960f33",
+    shortsGrad: "linear-gradient(135deg,#f0faf5,#f5f8f5)", shortsBorder: "#1a8a5433",
+    scarcityGrad: "linear-gradient(135deg,#faf5e8,#f8f0e0)", scarcityBorder: "#b8960f33",
+    ctaGrad: "linear-gradient(135deg,#f5f0e0,#f0ead0)",
+    tierBorder: (accent) => `${accent}44`, tierHighlightBg: (accent) => `${accent}15`,
+    sponsorCardBg: "#f8f8f8", sponsorCardBorder: "#e0e0e0",
+    testimonialBg: "#f0faf5", testimonialBorder: "#1a8a5433",
+    barBg: "#e8e8e8",
+  };
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
     check();
@@ -203,7 +235,26 @@ export default function SponsorshipSection() {
   const px = isMobile ? 16 : 40;
 
   return (
-    <div style={{ background: "#000", minHeight: "100vh", fontFamily: "'Courier New', monospace", color: "#e8e8e8", paddingBottom: "60px" }}>
+    <div style={{ background: t.bg, minHeight: "100vh", fontFamily: "'Courier New', monospace", color: t.text, paddingBottom: "60px", transition: "background 0.3s, color 0.3s" }}>
+
+      {/* ── THEME TOGGLE ── */}
+      <div style={{ position: "fixed", top: "16px", right: "16px", zIndex: 999 }}>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          style={{
+            background: darkMode ? "#1a1a1a" : "#f0f0f0",
+            border: `1px solid ${darkMode ? "#333" : "#ccc"}`,
+            borderRadius: "50%", width: "40px", height: "40px",
+            cursor: "pointer", fontSize: "18px", display: "flex",
+            alignItems: "center", justifyContent: "center",
+            transition: "all 0.3s",
+            boxShadow: darkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.15)",
+          }}
+          title={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
+      </div>
 
       {/* ── HEADER (hub style) ── */}
       <header style={{ maxWidth: "960px", margin: isMobile ? "0 auto 32px" : "0 auto 48px", textAlign: "center", padding: isMobile ? "32px 16px 0" : "48px 40px 0" }}>
@@ -212,18 +263,18 @@ export default function SponsorshipSection() {
           alt="10AMPRO"
           style={{ width: isMobile ? "72px" : "100px", height: isMobile ? "72px" : "100px", borderRadius: "50%", margin: "0 auto 16px", display: "block" }}
         />
-        <h1 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "600", margin: "0 0 8px", color: "#fff", fontFamily: "Georgia, serif" }}>
+        <h1 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "600", margin: "0 0 8px", color: t.heading, fontFamily: "Georgia, serif" }}>
           Patrocina 10AMPRO
         </h1>
-        <p style={{ fontSize: "13px", color: "#6b7280", margin: 0 }}>
+        <p style={{ fontSize: "13px", color: t.muted, margin: 0 }}>
           Rate Card & Media Kit 2026
         </p>
-        <p style={{ fontSize: "13px", color: "#aaa", margin: "12px auto 0", maxWidth: "520px", lineHeight: "1.6", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
+        <p style={{ fontSize: "13px", color: t.quoteText, margin: "12px auto 0", maxWidth: "520px", lineHeight: "1.6", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
           "La droga más peligrosa es un salario cómodo. Optimiza tu dieta de información y reprograma tu cerebro con modelos mentales de inversión táctica."
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "16px", fontSize: "12px" }}>
-          <a href="https://10am.pro" target="_blank" rel="noopener noreferrer" style={{ color: "#6b7280", textDecoration: "none" }}>10am.pro</a>
-          <a href="https://x.com/holdmybirra" target="_blank" rel="noopener noreferrer" style={{ color: "#10b981", textDecoration: "none" }}>@holdmybirra</a>
+          <a href="https://10am.pro" target="_blank" rel="noopener noreferrer" style={{ color: t.muted, textDecoration: "none" }}>10am.pro</a>
+          <a href="https://x.com/holdmybirra" target="_blank" rel="noopener noreferrer" style={{ color: t.green, textDecoration: "none" }}>@holdmybirra</a>
         </div>
       </header>
 
@@ -232,11 +283,11 @@ export default function SponsorshipSection() {
         {/* ── EPISODE COUNTER ── */}
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: "#0a0a0a", border: "1px solid #ffcc0022", borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
-              <div style={{ fontSize: "28px", fontWeight: "900", color: "#ffcc00" }}>198</div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>198</div>
               <div style={{ textAlign: "left" }}>
-                <div style={{ fontSize: "11px", fontWeight: "700", color: "#fff", letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
-                <div style={{ fontSize: "10px", color: "#555", marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
+                <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
+                <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
               </div>
             </div>
           </a>
@@ -245,16 +296,16 @@ export default function SponsorshipSection() {
         {/* ── BLOQUE 1: PODCAST — donde sale el contenido del sponsor ── */}
         <div style={{ marginBottom: "20px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-            <div style={{ fontSize: "9px", color: "#ffcc00", letterSpacing: "4px", fontWeight: "700" }}>📻 PODCAST</div>
-            <div style={{ flex: 1, height: "1px", background: "#1a1a1a" }} />
-            <div style={{ fontSize: "10px", color: "#555" }}>donde sale el contenido de tu marca</div>
+            <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700" }}>📻 PODCAST</div>
+            <div style={{ flex: 1, height: "1px", background: t.border }} />
+            <div style={{ fontSize: "10px", color: t.subtle }}>donde sale el contenido de tu marca</div>
           </div>
-          <div style={{ background: "linear-gradient(135deg,#0f1200,#0a0f0a)", border: "1px solid #ffcc0022", borderRadius: "14px", overflow: "hidden" }}>
+          <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
             {/* Top row: total + key metrics */}
-            <div style={{ padding: "20px 28px", borderBottom: "1px solid #1a1a1a", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+            <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
-                <div style={{ fontSize: "9px", color: "#ffcc00", letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: "#ffcc00" }}>{((ytSubs || 23300) + 38600 + 6000 + 5400 + 3500).toLocaleString()}+ <span style={{ fontSize: "13px", color: "#888", fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23300) + 38600 + 6000 + 5400 + 3500).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
@@ -262,9 +313,9 @@ export default function SponsorshipSection() {
                   { v: "1/sem",  l: "EPISODIOS" },
                   { v: "23:23",    l: "AVG WATCH TIME" },
                 ].map(s => (
-                  <div key={s.l} style={{ background: "#0a0a0a", border: "1px solid #2a2a2a", borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
-                    <div style={{ fontSize: "18px", fontWeight: "900", color: "#fff" }}>{s.v}</div>
-                    <div style={{ fontSize: "9px", color: "#555", letterSpacing: "2px", marginTop: "2px" }}>{s.l}</div>
+                  <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
+                    <div style={{ fontSize: "18px", fontWeight: "900", color: t.heading }}>{s.v}</div>
+                    <div style={{ fontSize: "9px", color: t.subtle, letterSpacing: "2px", marginTop: "2px" }}>{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -272,10 +323,10 @@ export default function SponsorshipSection() {
             {/* Platform grid */}
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)" }}>
               {podcastPlatforms.map((p, i) => (
-                <div key={p.platform} style={{ padding: "18px 16px", borderRight: (!isMobile && i < 2) ? "1px solid #1a1a1a" : "none", borderBottom: isMobile && i < 2 ? "1px solid #1a1a1a" : "none", textAlign: "center" }}>
+                <div key={p.platform} style={{ padding: "18px 16px", borderRight: (!isMobile && i < 2) ? `1px solid ${t.border}` : "none", borderBottom: isMobile && i < 2 ? `1px solid ${t.border}` : "none", textAlign: "center" }}>
                   <div style={{ fontSize: "20px", color: p.color, marginBottom: "8px", opacity: 0.8 }}>{p.icon}</div>
-                  <div style={{ fontSize: "18px", fontWeight: "900", color: "#fff", marginBottom: "4px" }}>{p.followers}</div>
-                  <div style={{ fontSize: "10px", color: "#555", letterSpacing: "2px" }}>{p.platform.toUpperCase()}</div>
+                  <div style={{ fontSize: "18px", fontWeight: "900", color: t.heading, marginBottom: "4px" }}>{p.followers}</div>
+                  <div style={{ fontSize: "10px", color: t.subtle, letterSpacing: "2px" }}>{p.platform.toUpperCase()}</div>
                 </div>
               ))}
             </div>
@@ -285,15 +336,15 @@ export default function SponsorshipSection() {
         {/* ── BLOQUE 2: SHORTS — reach adicional de distribución ── */}
         <div style={{ marginBottom: "48px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-            <div style={{ fontSize: "9px", color: "#44cc88", letterSpacing: "4px", fontWeight: "700" }}>📱 SHORTS</div>
-            <div style={{ flex: 1, height: "1px", background: "#1a1a1a" }} />
-            <a href="https://10ampro-shorts-analytics.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "10px", color: "#44cc88", textDecoration: "none", letterSpacing: "1px" }}>ver analytics en vivo ↗</a>
+            <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700" }}>📱 SHORTS</div>
+            <div style={{ flex: 1, height: "1px", background: t.border }} />
+            <a href="https://10ampro-shorts-analytics.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "10px", color: t.green, textDecoration: "none", letterSpacing: "1px" }}>ver analytics en vivo ↗</a>
           </div>
-          <div style={{ background: "linear-gradient(135deg,#0a1a0f,#080f08)", border: "1px solid #44cc8822", borderRadius: "14px", overflow: "hidden" }}>
-            <div style={{ padding: "20px 28px", borderBottom: "1px solid #1a1a1a", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+          <div style={{ background: t.shortsGrad, border: `1px solid ${t.shortsBorder}`, borderRadius: "14px", overflow: "hidden" }}>
+            <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
-                <div style={{ fontSize: "9px", color: "#44cc88", letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>REACH EN CORTOS</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: "#44cc88" }}>1.1M <span style={{ fontSize: "13px", color: "#888", fontWeight: "400" }}>views totales · 73 clips</span></div>
+                <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>REACH EN CORTOS</div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>1.1M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 73 clips</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
@@ -301,9 +352,9 @@ export default function SponsorshipSection() {
                   { v: "4.1%",  l: "ENG. RATE" },
                   { v: "34.6K", l: "TOTAL LIKES" },
                 ].map(s => (
-                  <div key={s.l} style={{ background: "#0a0a0a", border: "1px solid #2a2a2a", borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
-                    <div style={{ fontSize: "18px", fontWeight: "900", color: "#44cc88" }}>{s.v}</div>
-                    <div style={{ fontSize: "9px", color: "#555", letterSpacing: "2px", marginTop: "2px" }}>{s.l}</div>
+                  <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
+                    <div style={{ fontSize: "18px", fontWeight: "900", color: t.green }}>{s.v}</div>
+                    <div style={{ fontSize: "9px", color: t.subtle, letterSpacing: "2px", marginTop: "2px" }}>{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -313,13 +364,13 @@ export default function SponsorshipSection() {
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {shortsPlatforms.map((row) => (
                   <div key={row.platform} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <div style={{ width: "72px", fontSize: "11px", color: "#666", textAlign: "right" }}>{row.platform}</div>
-                    <div style={{ flex: 1, background: "#111", borderRadius: "2px", height: "10px", overflow: "hidden" }}>
+                    <div style={{ width: "72px", fontSize: "11px", color: t.muted, textAlign: "right" }}>{row.platform}</div>
+                    <div style={{ flex: 1, background: t.barBg, borderRadius: "2px", height: "10px", overflow: "hidden" }}>
                       <div style={{ width: `${row.pct}%`, height: "100%", background: row.color, borderRadius: "2px", opacity: 0.85 }} />
                     </div>
-                    <div style={{ width: "58px", fontSize: "12px", fontWeight: "700", color: "#ccc", textAlign: "right" }}>{row.views}</div>
-                    <div style={{ width: "40px", fontSize: "10px", color: "#555", textAlign: "right" }}>{row.pct}%</div>
-                    <div style={{ width: "64px", fontSize: "10px", color: "#444", textAlign: "right" }}>{row.followers}</div>
+                    <div style={{ width: "58px", fontSize: "12px", fontWeight: "700", color: darkMode ? "#ccc" : "#333", textAlign: "right" }}>{row.views}</div>
+                    <div style={{ width: "40px", fontSize: "10px", color: t.subtle, textAlign: "right" }}>{row.pct}%</div>
+                    <div style={{ width: "64px", fontSize: "10px", color: darkMode ? "#444" : "#999", textAlign: "right" }}>{row.followers}</div>
                   </div>
                 ))}
               </div>
@@ -329,19 +380,19 @@ export default function SponsorshipSection() {
 
         {/* ── KILLER PHRASE ── */}
         <div style={{ textAlign: "center", margin: "48px 0" }}>
-          <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,#ffcc0033,transparent)", marginBottom: "32px" }} />
-          <p style={{ fontSize: isMobile ? "18px" : "24px", fontWeight: "900", color: "#fff", margin: 0, fontFamily: "Georgia,serif", lineHeight: "1.5" }}>
-            Aquí no se venden vistas.<br />Se vende <span style={{ color: "#ffcc00" }}>confianza</span>.
+          <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${t.accent}33,transparent)`, marginBottom: "32px" }} />
+          <p style={{ fontSize: isMobile ? "18px" : "24px", fontWeight: "900", color: t.heading, margin: 0, fontFamily: "Georgia,serif", lineHeight: "1.5" }}>
+            Aquí no se venden vistas.<br />Se vende <span style={{ color: t.accent }}>confianza</span>.
           </p>
-          <div style={{ height: "1px", background: "linear-gradient(90deg,transparent,#ffcc0033,transparent)", marginTop: "32px" }} />
+          <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${t.accent}33,transparent)`, marginTop: "32px" }} />
         </div>
 
         {/* ── SCARCITY / FOMO ── */}
         <div style={{ marginBottom: "48px", textAlign: "center" }}>
-          <div style={{ background: "linear-gradient(135deg,#1a1000,#0f0a00)", border: "1px solid #ffcc0022", borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
-            <div style={{ fontSize: "9px", color: "#ff4444", letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>⏳ DISPONIBILIDAD LIMITADA</div>
-            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: "#fff", margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 2 espacios de patrocinio por episodio</h3>
-            <p style={{ fontSize: "13px", color: "#777", margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
+          <div style={{ background: t.scarcityGrad, border: `1px solid ${t.scarcityBorder}`, borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
+            <div style={{ fontSize: "9px", color: t.red, letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>⏳ DISPONIBILIDAD LIMITADA</div>
+            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: t.heading, margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 2 espacios de patrocinio por episodio</h3>
+            <p style={{ fontSize: "13px", color: t.muted, margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
               Cada episodio tiene un máximo de 2 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
@@ -350,14 +401,14 @@ export default function SponsorshipSection() {
                 { value: "54", label: "EPISODIOS EN 2026", sub: "programados este año" },
                 { value: "1", label: "MARCA POR CATEGORÍA", sub: "exclusividad garantizada" },
               ].map((item) => (
-                <div key={item.label} style={{ background: "#0a0a0a", border: "1px solid #2a2a2a", borderRadius: "10px", padding: "18px 14px" }}>
-                  <div style={{ fontSize: "30px", fontWeight: "900", color: "#ff4444" }}>{item.value}</div>
-                  <div style={{ fontSize: "9px", color: "#888", letterSpacing: "2px", fontWeight: "700", marginTop: "6px" }}>{item.label}</div>
-                  <div style={{ fontSize: "10px", color: "#444", marginTop: "4px" }}>{item.sub}</div>
+                <div key={item.label} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "10px", padding: "18px 14px" }}>
+                  <div style={{ fontSize: "30px", fontWeight: "900", color: t.red }}>{item.value}</div>
+                  <div style={{ fontSize: "9px", color: t.subtle, letterSpacing: "2px", fontWeight: "700", marginTop: "6px" }}>{item.label}</div>
+                  <div style={{ fontSize: "10px", color: darkMode ? "#444" : "#999", marginTop: "4px" }}>{item.sub}</div>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: "11px", color: "#ff444499", letterSpacing: "1px", margin: 0 }}>
+            <p style={{ fontSize: "11px", color: `${t.red}99`, letterSpacing: "1px", margin: 0 }}>
               Los espacios se asignan por orden de llegada. Reserva tu categoría antes de que lo haga tu competencia.
             </p>
           </div>
@@ -366,31 +417,31 @@ export default function SponsorshipSection() {
         {/* ── TIERS ── */}
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "20px", marginBottom: "48px" }}>
           {tiers.map((tier) => (
-            <div key={tier.badge} style={{ background: "#0f0f0f", border: `1px solid ${tier.accent}33`, borderRadius: "12px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+            <div key={tier.badge} style={{ background: t.card, border: `1px solid ${t.tierBorder(tier.accent)}`, borderRadius: "12px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ height: "2px", background: `linear-gradient(90deg,transparent,${tier.accent},transparent)` }} />
               <div style={{ padding: "24px 26px 18px" }}>
                 <div style={{ fontSize: "12px", fontWeight: "900", color: tier.accent, letterSpacing: "2px", marginBottom: "10px" }}>{tier.badge}</div>
-                <p style={{ fontSize: "12px", color: "#777", margin: 0, lineHeight: "1.6", fontStyle: "italic", fontFamily: "Georgia,serif" }}>{tier.tag}</p>
+                <p style={{ fontSize: "12px", color: t.muted, margin: 0, lineHeight: "1.6", fontStyle: "italic", fontFamily: "Georgia,serif" }}>{tier.tag}</p>
               </div>
-              <div style={{ height: "1px", background: "#1a1a1a", margin: "0 26px" }} />
+              <div style={{ height: "1px", background: t.border, margin: "0 26px" }} />
               <div style={{ padding: "18px 26px", flex: 1 }}>
-                <div style={{ fontSize: "9px", color: "#444", letterSpacing: "3px", marginBottom: "12px", fontWeight: "700" }}>INCLUYE</div>
+                <div style={{ fontSize: "9px", color: darkMode ? "#444" : "#999", letterSpacing: "3px", marginBottom: "12px", fontWeight: "700" }}>INCLUYE</div>
                 {tier.includes.map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: "10px", marginBottom: "9px", alignItems: "flex-start" }}>
                     <span style={{ color: tier.accent, fontSize: "11px", marginTop: "2px", flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: "12px", color: "#bbb", lineHeight: "1.5" }}>{item}</span>
+                    <span style={{ fontSize: "12px", color: darkMode ? "#bbb" : "#555", lineHeight: "1.5" }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <div style={{ height: "1px", background: "#1a1a1a", margin: "0 26px" }} />
+              <div style={{ height: "1px", background: t.border, margin: "0 26px" }} />
               <div style={{ padding: "18px 26px" }}>
                 {tier.pricing.map((p, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", marginBottom: i < tier.pricing.length - 1 ? "8px" : "0", background: p.highlight ? `${tier.accent}10` : "#0a0a0a", border: p.highlight ? `1px solid ${tier.accent}44` : "1px solid #1a1a1a", borderRadius: "6px" }}>
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", marginBottom: i < tier.pricing.length - 1 ? "8px" : "0", background: p.highlight ? t.tierHighlightBg(tier.accent) : t.cardAlt, border: p.highlight ? `1px solid ${tier.accent}44` : `1px solid ${t.border}`, borderRadius: "6px" }}>
                     <div>
-                      <div style={{ fontSize: "9px", color: p.highlight ? tier.accent : "#555", letterSpacing: "2px", fontWeight: "700", marginBottom: "3px" }}>{p.label}</div>
-                      <div style={{ fontSize: "10px", color: p.highlight ? `${tier.accent}99` : "#333" }}>{p.sub}</div>
+                      <div style={{ fontSize: "9px", color: p.highlight ? tier.accent : t.subtle, letterSpacing: "2px", fontWeight: "700", marginBottom: "3px" }}>{p.label}</div>
+                      <div style={{ fontSize: "10px", color: p.highlight ? `${tier.accent}99` : (darkMode ? "#333" : "#aaa") }}>{p.sub}</div>
                     </div>
-                    <div style={{ fontSize: p.highlight ? "26px" : "20px", fontWeight: "900", color: p.highlight ? tier.accent : "#666" }}>{p.price}</div>
+                    <div style={{ fontSize: p.highlight ? "26px" : "20px", fontWeight: "900", color: p.highlight ? tier.accent : t.muted }}>{p.price}</div>
                   </div>
                 ))}
               </div>
@@ -401,13 +452,13 @@ export default function SponsorshipSection() {
         {/* ── SOCIAL PROOF ── */}
         <div style={{ marginBottom: "48px" }}>
           <div style={{ textAlign: "center", marginBottom: "28px" }}>
-            <div style={{ fontSize: "9px", color: "#ffcc00", letterSpacing: "4px", fontWeight: "700", marginBottom: "8px" }}>SOCIAL PROOF</div>
-            <h3 style={{ fontSize: isMobile ? "20px" : "24px", fontWeight: "900", color: "#fff", margin: 0, fontFamily: "Georgia,serif" }}>Así se ve tu marca en 10AMPRO</h3>
-            <p style={{ color: "#555", fontSize: "12px", marginTop: "8px", letterSpacing: "1px" }}>IFrame visible durante el 100% del episodio · Casos reales</p>
+            <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "8px" }}>SOCIAL PROOF</div>
+            <h3 style={{ fontSize: isMobile ? "20px" : "24px", fontWeight: "900", color: t.heading, margin: 0, fontFamily: "Georgia,serif" }}>Así se ve tu marca en 10AMPRO</h3>
+            <p style={{ color: t.subtle, fontSize: "12px", marginTop: "8px", letterSpacing: "1px" }}>IFrame visible durante el 100% del episodio · Casos reales</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "16px" }}>
             {sponsors.map((s, i) => (
-              <div key={i} style={{ background: "#0f0f0f", border: "1px solid #1e1e1e", borderRadius: "10px", overflow: "hidden" }}>
+              <div key={i} style={{ background: t.sponsorCardBg, border: `1px solid ${t.sponsorCardBorder}`, borderRadius: "10px", overflow: "hidden" }}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ display: "block", position: "relative", textDecoration: "none" }}>
                   <img src={s.img} alt={`${s.name} · ${s.episode}`} style={{ width: "100%", display: "block" }} />
                   <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "52px", height: "52px", background: "rgba(0,0,0,0.72)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid rgba(255,255,255,0.35)" }}>
@@ -419,10 +470,10 @@ export default function SponsorshipSection() {
                 </a>
                 <div style={{ padding: "14px 18px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div>
-                    <div style={{ fontSize: "13px", fontWeight: "700", color: "#fff" }}>{s.name}</div>
-                    <div style={{ fontSize: "11px", color: "#555", marginTop: "2px" }}>{s.desc} · {s.episode}</div>
+                    <div style={{ fontSize: "13px", fontWeight: "700", color: t.heading }}>{s.name}</div>
+                    <div style={{ fontSize: "11px", color: t.subtle, marginTop: "2px" }}>{s.desc} · {s.episode}</div>
                   </div>
-                  <div style={{ background: "#1a1a0a", border: "1px solid #ffcc0033", borderRadius: "4px", padding: "4px 10px", fontSize: "10px", color: "#ffcc00", letterSpacing: "1px" }}>IFrame</div>
+                  <div style={{ background: darkMode ? "#1a1a0a" : "#faf5e0", border: `1px solid ${t.accent}33`, borderRadius: "4px", padding: "4px 10px", fontSize: "10px", color: t.accent, letterSpacing: "1px" }}>IFrame</div>
                 </div>
               </div>
             ))}
@@ -431,21 +482,21 @@ export default function SponsorshipSection() {
           {/* Testimonials */}
           <div style={{ marginTop: "32px" }}>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
-              <div style={{ fontSize: "9px", color: "#44cc88", letterSpacing: "4px", fontWeight: "700", marginBottom: "6px" }}>LO QUE DICE LA AUDIENCIA</div>
-              <p style={{ color: "#555", fontSize: "12px", letterSpacing: "1px", margin: 0 }}>Suscriptores de pago · Substack</p>
+              <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "6px" }}>LO QUE DICE LA AUDIENCIA</div>
+              <p style={{ color: t.subtle, fontSize: "12px", letterSpacing: "1px", margin: 0 }}>Suscriptores de pago · Substack</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px" }}>
               {[
                 { name: "Felipe Castrillón", badge: "Paid Subscriber · Substack", quote: "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación." },
                 { name: "Juan D", badge: "Paid Subscriber · Substack", quote: "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven." },
                 { name: "Jose Cardenas", badge: "Paid Subscriber · Substack", quote: "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest." },
-              ].map((t, i) => (
-                <div key={i} style={{ background: "#0a0f0a", border: "1px solid #44cc8822", borderRadius: "10px", padding: "22px 20px", display: "flex", flexDirection: "column", gap: "14px" }}>
-                  <div style={{ fontSize: "22px", color: "#44cc8844" }}>"</div>
-                  <p style={{ fontSize: "12px", color: "#aaa", lineHeight: "1.7", margin: 0, fontFamily: "Georgia,serif", fontStyle: "italic", flex: 1 }}>{t.quote}</p>
+              ].map((tst, i) => (
+                <div key={i} style={{ background: t.testimonialBg, border: `1px solid ${t.testimonialBorder}`, borderRadius: "10px", padding: "22px 20px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                  <div style={{ fontSize: "22px", color: `${t.green}44` }}>"</div>
+                  <p style={{ fontSize: "12px", color: t.quoteText, lineHeight: "1.7", margin: 0, fontFamily: "Georgia,serif", fontStyle: "italic", flex: 1 }}>{tst.quote}</p>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "4px" }}>
-                    <div style={{ fontSize: "12px", fontWeight: "700", color: "#fff" }}>{t.name}</div>
-                    <div style={{ background: "#44cc8822", border: "1px solid #44cc8844", borderRadius: "3px", padding: "2px 6px", fontSize: "9px", color: "#44cc88", fontWeight: "700", letterSpacing: "1px" }}>{t.badge}</div>
+                    <div style={{ fontSize: "12px", fontWeight: "700", color: t.heading }}>{tst.name}</div>
+                    <div style={{ background: `${t.green}22`, border: `1px solid ${t.green}44`, borderRadius: "3px", padding: "2px 6px", fontSize: "9px", color: t.green, fontWeight: "700", letterSpacing: "1px" }}>{tst.badge}</div>
                   </div>
                 </div>
               ))}
@@ -459,11 +510,11 @@ export default function SponsorshipSection() {
         {/* ── CTA ── */}
         <div style={{ textAlign: "center" }}>
           <a href="https://forms.gle/SuszJCtsQE7mF6mPA" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-            <button style={{ background: "linear-gradient(135deg,#1a1400,#141000)", color: "#ffcc00", border: "1px solid #ffcc0044", padding: "16px 52px", fontSize: "12px", fontWeight: "900", letterSpacing: "4px", borderRadius: "6px", cursor: "pointer", fontFamily: "'Courier New',monospace" }}>
+            <button style={{ background: t.ctaGrad, color: t.accent, border: `1px solid ${t.accent}44`, padding: "16px 52px", fontSize: "12px", fontWeight: "900", letterSpacing: "4px", borderRadius: "6px", cursor: "pointer", fontFamily: "'Courier New',monospace" }}>
               QUIERO SER PATROCINADOR →
             </button>
           </a>
-          <div style={{ color: "#333", fontSize: "11px", marginTop: "16px", letterSpacing: "1px" }}>
+          <div style={{ color: t.footerText, fontSize: "11px", marginTop: "16px", letterSpacing: "1px" }}>
             10AMPRO · Innovación, Tecnología y Negocios para LATAM · 2026 · www.10am.pro
           </div>
         </div>
