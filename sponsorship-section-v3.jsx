@@ -241,6 +241,7 @@ export default function SponsorshipSection() {
 
   return (
     <div style={{ background: t.bg, minHeight: "100vh", fontFamily: "'Courier New', monospace", color: t.text, paddingBottom: "60px", transition: "background 0.3s, color 0.3s" }}>
+      <style dangerouslySetInnerHTML={{ __html: "html,body{margin:0;padding:0;background:#000}" }} />
 
       {/* ── THEME TOGGLE ── */}
       <div style={{ position: "fixed", top: "16px", right: "16px", zIndex: 999 }}>
