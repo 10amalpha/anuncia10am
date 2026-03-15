@@ -226,10 +226,10 @@ export default function SponsorshipSection() {
   ];
 
   const shortsPlatforms = [
-    { platform: "TikTok",    followers: "48,000+", views: "283.8K", pct: 26.7, color: "#ff4466" },
-    { platform: "Instagram", followers: "15,000+", views: "561.7K", pct: 52.9, color: "#e1306c" },
-    { platform: "X",         followers: "5,400+",  views: "140.0K", pct: 13.2, color: "#1da1f2" },
-    { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", views: "75.5K",  pct: 7.1,  color: "#ff0000" },
+    { platform: "TikTok",    followers: "48,000+", views: "323.7K", pct: 28.2, color: "#ff4466" },
+    { platform: "Instagram", followers: "15,000+", views: "590.3K", pct: 51.4, color: "#e1306c" },
+    { platform: "X",         followers: "5,400+",  views: "151.6K", pct: 13.2, color: "#1da1f2" },
+    { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", views: "81.8K",  pct: 7.1,  color: "#ff0000" },
   ];
 
   const px = isMobile ? 16 : 40;
@@ -344,13 +344,13 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>REACH EN CORTOS</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>1.1M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 73 clips</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>1.1M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 76 clips</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
-                  { v: "14.5K", l: "AVG / CLIP" },
-                  { v: "4.1%",  l: "ENG. RATE" },
-                  { v: "34.6K", l: "TOTAL LIKES" },
+                  { v: "15.1K", l: "AVG / CLIP" },
+                  { v: "3.3%",  l: "ENG. RATE" },
+                  { v: "38.2K", l: "TOTAL LIKES" },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.green }}>{s.v}</div>
