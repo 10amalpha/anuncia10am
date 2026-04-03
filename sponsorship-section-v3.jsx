@@ -311,7 +311,7 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23800) + 38629 + 6000 + 5419 + 4310).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23800) + 36221 + 6000 + 5862 + 4728).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
