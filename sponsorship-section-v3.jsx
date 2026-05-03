@@ -224,16 +224,16 @@ export default function SponsorshipSection() {
 
   const podcastPlatforms = [
     { platform: "YouTube",        followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", icon: "▶", color: "#ff0000" },
-    { platform: "Spotify",        followers: "38,600+", icon: "♫", color: "#1db954" },
+    { platform: "Spotify",        followers: "36,500+", icon: "♫", color: "#1db954" },
     { platform: "Apple Podcasts", followers: "6,000+",  icon: "🎧", color: "#a855f7" },
-    { platform: "X",              followers: "5,400+",  icon: "𝕏", color: "#e4e4e7" },
-    { platform: "Substack",       followers: "3,500+",  icon: "✉", color: "#ff6719" },
+    { platform: "X",              followers: "6,000+",  icon: "𝕏", color: "#e4e4e7" },
+    { platform: "Substack",       followers: "5,400+",  icon: "✉", color: "#ff6719" },
   ];
 
   const shortsPlatforms = [
-    { platform: "TikTok",    followers: "48,000+", views: "323.7K", pct: 28.2, color: "#ff4466" },
-    { platform: "Instagram", followers: "15,000+", views: "590.3K", pct: 51.4, color: "#e1306c" },
-    { platform: "X",         followers: "5,400+",  views: "151.6K", pct: 13.2, color: "#1da1f2" },
+    { platform: "TikTok",    followers: "50,000+", views: "323.7K", pct: 28.2, color: "#ff4466" },
+    { platform: "Instagram", followers: "17,000+", views: "590.3K", pct: 51.4, color: "#e1306c" },
+    { platform: "X",         followers: "6,000+",  views: "151.6K", pct: 13.2, color: "#1da1f2" },
     { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", views: "81.8K",  pct: 7.1,  color: "#ff0000" },
   ];
 
@@ -311,7 +311,7 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23800) + 36221 + 6000 + 5862 + 4728).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23800) + 36527 + 6000 + 6092 + 5414).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
