@@ -122,7 +122,6 @@ function SponsorLogin() {
 export default function SponsorshipSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [ytSubs, setYtSubs] = useState(null);
-  const [ytVideos, setYtVideos] = useState(null);
   const [darkMode, setDarkMode] = useState(true);
 
   const t = darkMode ? {
@@ -172,9 +171,6 @@ export default function SponsorshipSection() {
           if (stats?.subscriberCount) {
             setYtSubs(parseInt(stats.subscriberCount));
           }
-          if (stats?.videoCount) {
-            setYtVideos(parseInt(stats.videoCount));
-          }
         }
       } catch (e) {}
     };
@@ -220,7 +216,7 @@ export default function SponsorshipSection() {
     { name: "FastestVPN", desc: "Tech · VPN · fastestvpn.com/10ampro", episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
   ];
 
-  const fmtSubs = (n) => n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + ",000+" : n + "+";
+  const fmtSubs = (n) => n >= 1000 ? n.toLocaleString("en-US") + "+" : n + "+";
 
   const podcastPlatforms = [
     { platform: "YouTube",        followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", icon: "▶", color: "#ff0000" },
@@ -290,7 +286,7 @@ export default function SponsorshipSection() {
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
-              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>{ytVideos || 198}</div>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>207</div>
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
                 <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
