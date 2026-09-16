@@ -286,7 +286,7 @@ export default function SponsorshipSection() {
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
-              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>207</div>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>225</div>
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
                 <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
