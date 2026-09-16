@@ -219,18 +219,18 @@ export default function SponsorshipSection() {
   const fmtSubs = (n) => n >= 1000 ? n.toLocaleString("en-US") + "+" : n + "+";
 
   const podcastPlatforms = [
-    { platform: "YouTube",        followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", icon: "▶", color: "#ff0000" },
-    { platform: "Spotify",        followers: "36,500+", icon: "♫", color: "#1db954" },
+    { platform: "YouTube",        followers: ytSubs ? fmtSubs(ytSubs) : "26,000+", icon: "▶", color: "#ff0000" },
+    { platform: "Spotify",        followers: "38,900+", icon: "♫", color: "#1db954" },
     { platform: "Apple Podcasts", followers: "6,000+",  icon: "🎧", color: "#a855f7" },
-    { platform: "X",              followers: "6,000+",  icon: "𝕏", color: "#e4e4e7" },
-    { platform: "Substack",       followers: "5,400+",  icon: "✉", color: "#ff6719" },
+    { platform: "X",              followers: "7,100+",  icon: "𝕏", color: "#e4e4e7" },
+    { platform: "Substack",       followers: "6,700+",  icon: "✉", color: "#ff6719" },
   ];
 
   const shortsPlatforms = [
-    { platform: "Instagram", followers: "17,000+", views: "848.6K", pct: 52.8, color: "#e1306c" },
-    { platform: "TikTok",    followers: "50,000+", views: "370.5K", pct: 23.1, color: "#ff4466" },
-    { platform: "X",         followers: "6,000+",  views: "245.0K", pct: 15.3, color: "#1da1f2" },
-    { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "23,000+", views: "141.9K", pct: 8.8,  color: "#ff0000" },
+    { platform: "Instagram", followers: "19,900+", views: "1.09M",  pct: 53.3, color: "#e1306c" },
+    { platform: "TikTok",    followers: "50,100+", views: "407.7K", pct: 19.9, color: "#ff4466" },
+    { platform: "X",         followers: "7,100+",  views: "289.2K", pct: 14.1, color: "#1da1f2" },
+    { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "26,000+", views: "258.6K", pct: 12.6,  color: "#ff0000" },
   ];
 
   const px = isMobile ? 16 : 40;
@@ -307,7 +307,7 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 23800) + 36527 + 6000 + 6092 + 5414).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 26000) + 38919 + 6000 + 7103 + 6725).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
@@ -346,13 +346,13 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>REACH EN CORTOS</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>1.6M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 121 clips</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>2.0M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 263 clips</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
-                  { v: "13.2K", l: "AVG / CLIP" },
-                  { v: "4.0%",  l: "ENG. RATE" },
-                  { v: "52.5K", l: "TOTAL LIKES" },
+                  { v: "11.3K", l: "AVG / CLIP" },
+                  { v: "3.5%",  l: "ENG. RATE" },
+                  { v: "59.0K", l: "TOTAL LIKES" },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.green }}>{s.v}</div>
