@@ -1,7 +1,84 @@
 'use client';
 import { useState, useEffect } from "react";
 
-function SponsorLogin() {
+const I18N = {
+  es: {
+    sponsorArea: "🔒 Área de Sponsors", sponsorAccess: "🔒 Acceso Sponsors", user: "Usuario", password: "Contraseña",
+    badCreds: "Credenciales incorrectas", enter: "ENTRAR →", cancel: "cancelar",
+    themeLight: "Cambiar a modo claro", themeDark: "Cambiar a modo oscuro", langBtn: "EN",
+    title: "Patrocina 10AMPRO", subtitle: "Rate Card & Media Kit 2026",
+    quote: "\"La droga más peligrosa es un salario cómodo. Optimiza tu dieta de información y reprograma tu cerebro con modelos mentales de inversión táctica.\"",
+    episodesPublished: "EPISODIOS PUBLICADOS", episodesSub: "desde 2021 · sin interrupciones · ver en YouTube ↗",
+    podcastWhere: "donde sale el contenido de tu marca", totalAudience: "AUDIENCIA TOTAL", listeners: "oyentes · 93% LATAM",
+    epDuration: "DURACIÓN EP.", episodes: "EPISODIOS", perWeek: "1/sem", avgWatch: "AVG WATCH TIME",
+    liveAnalytics: "ver analytics en vivo ↗", shortsReach: "REACH EN CORTOS", totalViews: "views totales · 263 clips",
+    avgClip: "AVG / CLIP", engRate: "ENG. RATE", totalLikes: "TOTAL LIKES",
+    killer1: "Aquí no se venden vistas.", killer2: "Se vende ", killerAccent: "confianza",
+    limited: "⏳ DISPONIBILIDAD LIMITADA", only2: "Solo 2 espacios de patrocinio por episodio",
+    slotsDesc: "Cada episodio tiene un máximo de 2 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.",
+    slotsPerEp: "SLOTS POR EPISODIO", slotsPerEpSub: "máximo por transmisión", eps2026: "EPISODIOS EN 2026", eps2026Sub: "programados este año",
+    brandPerCat: "MARCA POR CATEGORÍA", brandPerCatSub: "exclusividad garantizada",
+    firstCome: "Los espacios se asignan por orden de llegada. Reserva tu categoría antes de que lo haga tu competencia.",
+    includes: "INCLUYE",
+    tiers: [
+      { badge: "PATROCINADOR DEL DÍA", tag: "Asociación directa con contenido de alta autoridad y transferencia de credibilidad nativa.",
+        includes: ["Episodio completo (60–90 min) en formato video + audio", "Distribución en YouTube, Spotify, Apple Podcasts y todas las plataformas", "IFrame con logo del aliado durante todo el episodio"],
+        pricing: [{ label: "INVERSIÓN INDIVIDUAL", sub: "USD por Episodio" }, { label: "PLAN ANUAL (54 EPISODIOS)", sub: "50% DESCUENTO APLICADO" }] },
+      { badge: "IFRAME · PRESENCIA PERMANENTE", tag: "Máxima exposición sostenida. Tu marca visible durante el 100% de la transmisión.",
+        includes: ["Logo y mensaje de marca visible durante todo el episodio completo", "Interactividad directa: Inclusión de códigos QR y enlaces de acción", "Exclusividad por categoría: Sin competencia en el mismo bloque visual"],
+        pricing: [{ label: "MENSUAL BASE", sub: "USD / Mes" }, { label: "TRIMESTRAL (12 EPS)", sub: "10% DESCUENTO APLICADO" }, { label: "SEMESTRAL (24 EPS)", sub: "20% DESCUENTO APLICADO" }] },
+    ],
+    socialProof: "SOCIAL PROOF", brandLooks: "Así se ve tu marca en 10AMPRO", iframeVisible: "IFrame visible durante el 100% del episodio · Casos reales",
+    watchEp: "Ver episodio ↗",
+    sponsorDesc: ["Fintech · billetera digital", "Energía · La energía que quieres", "Crypto · DeFi & NFTs wallet", "Tech · VPN · fastestvpn.com/10ampro"],
+    audienceSays: "LO QUE DICE LA AUDIENCIA", paidSubs: "Suscriptores de pago · Substack",
+    testimonials: [
+      "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación.",
+      "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven.",
+      "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest.",
+    ],
+    cta: "QUIERO SER PATROCINADOR →", footer: "10AMPRO · Innovación, Tecnología y Negocios para LATAM · 2026 · www.10am.pro",
+  },
+  en: {
+    sponsorArea: "🔒 Sponsor Area", sponsorAccess: "🔒 Sponsor Access", user: "Username", password: "Password",
+    badCreds: "Invalid credentials", enter: "SIGN IN →", cancel: "cancel",
+    themeLight: "Switch to light mode", themeDark: "Switch to dark mode", langBtn: "ES",
+    title: "Sponsor 10AMPRO", subtitle: "Rate Card & Media Kit 2026",
+    quote: "\"The most dangerous drug is a comfortable salary. Optimize your information diet and reprogram your brain with tactical investing mental models.\"",
+    episodesPublished: "EPISODES PUBLISHED", episodesSub: "since 2021 · zero gaps · watch on YouTube ↗",
+    podcastWhere: "where your brand's content airs", totalAudience: "TOTAL AUDIENCE", listeners: "listeners · 93% LATAM",
+    epDuration: "EP. LENGTH", episodes: "EPISODES", perWeek: "1/week", avgWatch: "AVG WATCH TIME",
+    liveAnalytics: "live analytics ↗", shortsReach: "SHORTS REACH", totalViews: "total views · 263 clips",
+    avgClip: "AVG / CLIP", engRate: "ENG. RATE", totalLikes: "TOTAL LIKES",
+    killer1: "We don't sell views.", killer2: "We sell ", killerAccent: "trust",
+    limited: "⏳ LIMITED AVAILABILITY", only2: "Only 2 sponsorship slots per episode",
+    slotsDesc: "Each episode has a maximum of 2 IFrame slots. Once your category is taken, there is no second option.",
+    slotsPerEp: "SLOTS PER EPISODE", slotsPerEpSub: "maximum per broadcast", eps2026: "EPISODES IN 2026", eps2026Sub: "scheduled this year",
+    brandPerCat: "BRAND PER CATEGORY", brandPerCatSub: "guaranteed exclusivity",
+    firstCome: "Slots are assigned first come, first served. Reserve your category before your competitor does.",
+    includes: "INCLUDES",
+    tiers: [
+      { badge: "SPONSOR OF THE DAY", tag: "Direct association with high-authority content and native credibility transfer.",
+        includes: ["Full episode (60–90 min) in video + audio format", "Distribution on YouTube, Spotify, Apple Podcasts and all platforms", "IFrame with partner logo throughout the entire episode"],
+        pricing: [{ label: "SINGLE EPISODE", sub: "USD per Episode" }, { label: "ANNUAL PLAN (54 EPISODES)", sub: "50% DISCOUNT APPLIED" }] },
+      { badge: "IFRAME · PERMANENT PRESENCE", tag: "Maximum sustained exposure. Your brand visible during 100% of the broadcast.",
+        includes: ["Logo and brand message visible throughout the full episode", "Direct interactivity: QR codes and action links included", "Category exclusivity: no competitors in the same visual block"],
+        pricing: [{ label: "MONTHLY BASE", sub: "USD / Month" }, { label: "QUARTERLY (12 EPS)", sub: "10% DISCOUNT APPLIED" }, { label: "SEMI-ANNUAL (24 EPS)", sub: "20% DISCOUNT APPLIED" }] },
+    ],
+    socialProof: "SOCIAL PROOF", brandLooks: "This is how your brand looks on 10AMPRO", iframeVisible: "IFrame visible during 100% of the episode · Real cases",
+    watchEp: "Watch episode ↗",
+    sponsorDesc: ["Fintech · digital wallet", "Energy · The energy you want", "Crypto · DeFi & NFTs wallet", "Tech · VPN · fastestvpn.com/10ampro"],
+    audienceSays: "WHAT THE AUDIENCE SAYS", paidSubs: "Paid subscribers · Substack",
+    testimonials: [
+      "The content they share on the podcast is valuable for my retirement project. It helps me structure investment and planning decisions.",
+      "Thank you for contributing to a better mental diet in a hyperconnected world built mostly to share garbage. As an entrepreneur, I'm grateful for the value received and glad to contribute to the value you create.",
+      "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest.",
+    ],
+    cta: "I WANT TO SPONSOR →", footer: "10AMPRO · Innovation, Technology & Business for LATAM · 2026 · www.10am.pro",
+  },
+};
+
+function SponsorLogin({ L }) {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
@@ -20,7 +97,7 @@ function SponsorLogin() {
       setPass("");
       setShow(false);
     } else {
-      setError("Credenciales incorrectas");
+      setError(L.badCreds);
     }
   };
 
@@ -41,7 +118,7 @@ function SponsorLogin() {
           onMouseOver={(e) => { e.currentTarget.style.borderColor = "#ffcc0044"; e.currentTarget.style.color = "#ffcc00"; }}
           onMouseOut={(e) => { e.currentTarget.style.borderColor = "#ffffff15"; e.currentTarget.style.color = "#555"; }}
         >
-          🔒 Área de Sponsors
+          {L.sponsorArea}
         </button>
       </div>
     );
@@ -59,11 +136,11 @@ function SponsorLogin() {
         marginBottom: 16, textAlign: "center",
         fontFamily: "'Courier New',monospace",
       }}>
-        🔒 Acceso Sponsors
+        {L.sponsorAccess}
       </div>
       <input
         type="text"
-        placeholder="Usuario"
+        placeholder={L.user}
         value={user}
         onChange={(e) => { setUser(e.target.value); setError(""); }}
         onKeyDown={(e) => e.key === "Enter" && handleLogin()}
@@ -77,7 +154,7 @@ function SponsorLogin() {
       />
       <input
         type="password"
-        placeholder="Contraseña"
+        placeholder={L.password}
         value={pass}
         onChange={(e) => { setPass(e.target.value); setError(""); }}
         onKeyDown={(e) => e.key === "Enter" && handleLogin()}
@@ -104,7 +181,7 @@ function SponsorLogin() {
           cursor: "pointer", fontFamily: "'Courier New',monospace",
         }}
       >
-        ENTRAR →
+        {L.enter}
       </button>
       <div
         onClick={() => { setShow(false); setError(""); }}
@@ -113,7 +190,7 @@ function SponsorLogin() {
           marginTop: 12, cursor: "pointer",
         }}
       >
-        cancelar
+        {L.cancel}
       </div>
     </div>
   );
@@ -123,6 +200,8 @@ export default function SponsorshipSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [ytSubs, setYtSubs] = useState(null);
   const [darkMode, setDarkMode] = useState(true);
+  const [lang, setLang] = useState("es");
+  const L = I18N[lang];
 
   const t = darkMode ? {
     bg: "#000", text: "#e8e8e8", heading: "#fff", muted: "#6b7280", subtle: "#555",
@@ -177,43 +256,20 @@ export default function SponsorshipSection() {
     fetchYtSubs();
   }, []);
 
-  const tiers = [
-    {
-      badge: "PATROCINADOR DEL DÍA",
-      tag: "Asociación directa con contenido de alta autoridad y transferencia de credibilidad nativa.",
-      includes: [
-        "Episodio completo (60–90 min) en formato video + audio",
-        "Distribución en YouTube, Spotify, Apple Podcasts y todas las plataformas",
-        "IFrame con logo del aliado durante todo el episodio",
-      ],
-      pricing: [
-        { label: "INVERSIÓN INDIVIDUAL",     price: "$3,500",  sub: "USD por Episodio",       highlight: false },
-        { label: "PLAN ANUAL (54 EPISODIOS)", price: "$94,500", sub: "50% DESCUENTO APLICADO", highlight: true  },
-      ],
-      accent: "#ffcc00",
-    },
-    {
-      badge: "IFRAME · PRESENCIA PERMANENTE",
-      tag: "Máxima exposición sostenida. Tu marca visible durante el 100% de la transmisión.",
-      includes: [
-        "Logo y mensaje de marca visible durante todo el episodio completo",
-        "Interactividad directa: Inclusión de códigos QR y enlaces de acción",
-        "Exclusividad por categoría: Sin competencia en el mismo bloque visual",
-      ],
-      pricing: [
-        { label: "MENSUAL BASE",        price: "$1,000", sub: "USD / Mes",              highlight: false },
-        { label: "TRIMESTRAL (12 EPS)", price: "$2,700", sub: "10% DESCUENTO APLICADO", highlight: false },
-        { label: "SEMESTRAL (24 EPS)",  price: "$4,800", sub: "20% DESCUENTO APLICADO", highlight: true  },
-      ],
-      accent: "#ff8800",
-    },
+  const tierMeta = [
+    { prices: ["$3,500", "$94,500"], highlight: [false, true], accent: "#ffcc00" },
+    { prices: ["$1,000", "$2,700", "$4,800"], highlight: [false, false, true], accent: "#ff8800" },
   ];
+  const tiers = L.tiers.map((tt, i) => ({
+    badge: tt.badge, tag: tt.tag, includes: tt.includes, accent: tierMeta[i].accent,
+    pricing: tt.pricing.map((pp, j) => ({ label: pp.label, sub: pp.sub, price: tierMeta[i].prices[j], highlight: tierMeta[i].highlight[j] })),
+  }));
 
   const sponsors = [
-    { name: "Wenia",      desc: "Fintech · billetera digital", episode: "E196", img: "/sponsors/wenia.jpg",      url: "https://youtu.be/leDK2mccGWM" },
-    { name: "Celsia",     desc: "Energía · La energía que quieres", episode: "E177", img: "/sponsors/celsia.jpg",     url: "https://youtu.be/y7fzSK5M5g0" },
-    { name: "Phantom",    desc: "Crypto · DeFi & NFTs wallet",  episode: "E189", img: "/sponsors/phantom.jpg",    url: "https://youtu.be/" },
-    { name: "FastestVPN", desc: "Tech · VPN · fastestvpn.com/10ampro", episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
+    { name: "Wenia",      desc: L.sponsorDesc[0], episode: "E196", img: "/sponsors/wenia.jpg",      url: "https://youtu.be/leDK2mccGWM" },
+    { name: "Celsia",     desc: L.sponsorDesc[1], episode: "E177", img: "/sponsors/celsia.jpg",     url: "https://youtu.be/y7fzSK5M5g0" },
+    { name: "Phantom",    desc: L.sponsorDesc[2], episode: "E189", img: "/sponsors/phantom.jpg",    url: "https://youtu.be/" },
+    { name: "FastestVPN", desc: L.sponsorDesc[3], episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
   ];
 
   const fmtSubs = (n) => n >= 1000 ? n.toLocaleString("en-US") + "+" : n + "+";
@@ -240,7 +296,22 @@ export default function SponsorshipSection() {
       <style dangerouslySetInnerHTML={{ __html: "html,body{margin:0;padding:0;background:#000}" }} />
 
       {/* ── THEME TOGGLE ── */}
-      <div style={{ position: "fixed", top: "16px", right: "16px", zIndex: 999 }}>
+      <div style={{ position: "fixed", top: "16px", right: "16px", zIndex: 999, display: "flex", gap: "8px", alignItems: "center" }}>
+        <button
+          onClick={() => setLang(lang === "es" ? "en" : "es")}
+          style={{
+            background: darkMode ? "#1a1a1a" : "#f0f0f0",
+            border: `1px solid ${darkMode ? "#333" : "#ccc"}`,
+            color: darkMode ? "#ffcc00" : "#b8960f",
+            borderRadius: "20px", height: "40px", padding: "0 14px",
+            cursor: "pointer", fontSize: "11px", fontWeight: "900", letterSpacing: "2px",
+            fontFamily: "'Courier New',monospace", transition: "all 0.3s",
+            boxShadow: darkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.15)",
+          }}
+          title={lang === "es" ? "Switch to English" : "Cambiar a Español"}
+        >
+          {L.langBtn}
+        </button>
         <button
           onClick={() => setDarkMode(!darkMode)}
           style={{
@@ -252,7 +323,7 @@ export default function SponsorshipSection() {
             transition: "all 0.3s",
             boxShadow: darkMode ? "0 2px 8px rgba(0,0,0,0.5)" : "0 2px 8px rgba(0,0,0,0.15)",
           }}
-          title={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+          title={darkMode ? L.themeLight : L.themeDark}
         >
           {darkMode ? "☀️" : "🌙"}
         </button>
@@ -266,13 +337,13 @@ export default function SponsorshipSection() {
           style={{ width: isMobile ? "72px" : "100px", height: isMobile ? "72px" : "100px", borderRadius: "50%", margin: "0 auto 16px", display: "block" }}
         />
         <h1 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "600", margin: "0 0 8px", color: t.heading, fontFamily: "Georgia, serif" }}>
-          Patrocina 10AMPRO
+          {L.title}
         </h1>
         <p style={{ fontSize: "13px", color: t.muted, margin: 0 }}>
-          Rate Card & Media Kit 2026
+          {L.subtitle}
         </p>
         <p style={{ fontSize: "13px", color: t.quoteText, margin: "12px auto 0", maxWidth: "520px", lineHeight: "1.6", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
-          "La droga más peligrosa es un salario cómodo. Optimiza tu dieta de información y reprograma tu cerebro con modelos mentales de inversión táctica."
+          {L.quote}
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "16px", fontSize: "12px" }}>
           <a href="https://10am.pro" target="_blank" rel="noopener noreferrer" style={{ color: t.muted, textDecoration: "none" }}>10am.pro</a>
@@ -288,8 +359,8 @@ export default function SponsorshipSection() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
               <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>225</div>
               <div style={{ textAlign: "left" }}>
-                <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>EPISODIOS PUBLICADOS</div>
-                <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>desde 2021 · sin interrupciones · ver en YouTube ↗</div>
+                <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>{L.episodesPublished}</div>
+                <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{L.episodesSub}</div>
               </div>
             </div>
           </a>
@@ -300,20 +371,20 @@ export default function SponsorshipSection() {
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
             <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700" }}>📻 PODCAST</div>
             <div style={{ flex: 1, height: "1px", background: t.border }} />
-            <div style={{ fontSize: "10px", color: t.subtle }}>donde sale el contenido de tu marca</div>
+            <div style={{ fontSize: "10px", color: t.subtle }}>{L.podcastWhere}</div>
           </div>
           <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
             {/* Top row: total + key metrics */}
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
-                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>AUDIENCIA TOTAL</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 26000) + 38919 + 6000 + 7103 + 6725).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>oyentes · 93% LATAM</span></div>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>{L.totalAudience}</div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 26000) + 38919 + 6000 + 7103 + 6725).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.listeners}</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
-                  { v: "1–1.5h", l: "DURACIÓN EP." },
-                  { v: "1/sem",  l: "EPISODIOS" },
-                  { v: "23:23",    l: "AVG WATCH TIME" },
+                  { v: "1–1.5h", l: L.epDuration },
+                  { v: L.perWeek, l: L.episodes },
+                  { v: "23:23", l: L.avgWatch },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.heading }}>{s.v}</div>
@@ -340,19 +411,19 @@ export default function SponsorshipSection() {
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
             <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700" }}>📱 SHORTS</div>
             <div style={{ flex: 1, height: "1px", background: t.border }} />
-            <a href="https://10ampro-shorts-analytics.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "10px", color: t.green, textDecoration: "none", letterSpacing: "1px" }}>ver analytics en vivo ↗</a>
+            <a href="https://10ampro-shorts-analytics.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "10px", color: t.green, textDecoration: "none", letterSpacing: "1px" }}>{L.liveAnalytics}</a>
           </div>
           <div style={{ background: t.shortsGrad, border: `1px solid ${t.shortsBorder}`, borderRadius: "14px", overflow: "hidden" }}>
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
-                <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>REACH EN CORTOS</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>2.0M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>views totales · 263 clips</span></div>
+                <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>{L.shortsReach}</div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>2.0M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.totalViews}</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
-                  { v: "11.3K", l: "AVG / CLIP" },
-                  { v: "3.5%",  l: "ENG. RATE" },
-                  { v: "59.0K", l: "TOTAL LIKES" },
+                  { v: "11.3K", l: L.avgClip },
+                  { v: "3.5%",  l: L.engRate },
+                  { v: "59.0K", l: L.totalLikes },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.green }}>{s.v}</div>
@@ -384,7 +455,7 @@ export default function SponsorshipSection() {
         <div style={{ textAlign: "center", margin: "48px 0" }}>
           <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${t.accent}33,transparent)`, marginBottom: "32px" }} />
           <p style={{ fontSize: isMobile ? "18px" : "24px", fontWeight: "900", color: t.heading, margin: 0, fontFamily: "Georgia,serif", lineHeight: "1.5" }}>
-            Aquí no se venden vistas.<br />Se vende <span style={{ color: t.accent }}>confianza</span>.
+            {L.killer1}<br />{L.killer2}<span style={{ color: t.accent }}>{L.killerAccent}</span>.
           </p>
           <div style={{ height: "1px", background: `linear-gradient(90deg,transparent,${t.accent}33,transparent)`, marginTop: "32px" }} />
         </div>
@@ -392,16 +463,16 @@ export default function SponsorshipSection() {
         {/* ── SCARCITY / FOMO ── */}
         <div style={{ marginBottom: "48px", textAlign: "center" }}>
           <div style={{ background: t.scarcityGrad, border: `1px solid ${t.scarcityBorder}`, borderRadius: "14px", padding: isMobile ? "28px 20px" : "36px 48px" }}>
-            <div style={{ fontSize: "9px", color: t.red, letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>⏳ DISPONIBILIDAD LIMITADA</div>
-            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: t.heading, margin: "0 0 10px", fontFamily: "Georgia,serif" }}>Solo 2 espacios de patrocinio por episodio</h3>
+            <div style={{ fontSize: "9px", color: t.red, letterSpacing: "4px", fontWeight: "700", marginBottom: "14px" }}>{L.limited}</div>
+            <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: t.heading, margin: "0 0 10px", fontFamily: "Georgia,serif" }}>{L.only2}</h3>
             <p style={{ fontSize: "13px", color: t.muted, margin: "0 0 28px", lineHeight: "1.7", maxWidth: "520px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>
-              Cada episodio tiene un máximo de 2 slots de IFrame. Una vez ocupada tu categoría, no hay segunda opción.
+              {L.slotsDesc}
             </p>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px", marginBottom: "24px" }}>
               {[
-                { value: "2", label: "SLOTS POR EPISODIO", sub: "máximo por transmisión" },
-                { value: "54", label: "EPISODIOS EN 2026", sub: "programados este año" },
-                { value: "1", label: "MARCA POR CATEGORÍA", sub: "exclusividad garantizada" },
+                { value: "2", label: L.slotsPerEp, sub: L.slotsPerEpSub },
+                { value: "54", label: L.eps2026, sub: L.eps2026Sub },
+                { value: "1", label: L.brandPerCat, sub: L.brandPerCatSub },
               ].map((item) => (
                 <div key={item.label} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "10px", padding: "18px 14px" }}>
                   <div style={{ fontSize: "30px", fontWeight: "900", color: t.red }}>{item.value}</div>
@@ -411,7 +482,7 @@ export default function SponsorshipSection() {
               ))}
             </div>
             <p style={{ fontSize: "11px", color: `${t.red}99`, letterSpacing: "1px", margin: 0 }}>
-              Los espacios se asignan por orden de llegada. Reserva tu categoría antes de que lo haga tu competencia.
+              {L.firstCome}
             </p>
           </div>
         </div>
@@ -427,7 +498,7 @@ export default function SponsorshipSection() {
               </div>
               <div style={{ height: "1px", background: t.border, margin: "0 26px" }} />
               <div style={{ padding: "18px 26px", flex: 1 }}>
-                <div style={{ fontSize: "9px", color: darkMode ? "#444" : "#999", letterSpacing: "3px", marginBottom: "12px", fontWeight: "700" }}>INCLUYE</div>
+                <div style={{ fontSize: "9px", color: darkMode ? "#444" : "#999", letterSpacing: "3px", marginBottom: "12px", fontWeight: "700" }}>{L.includes}</div>
                 {tier.includes.map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: "10px", marginBottom: "9px", alignItems: "flex-start" }}>
                     <span style={{ color: tier.accent, fontSize: "11px", marginTop: "2px", flexShrink: 0 }}>✓</span>
@@ -454,9 +525,9 @@ export default function SponsorshipSection() {
         {/* ── SOCIAL PROOF ── */}
         <div style={{ marginBottom: "48px" }}>
           <div style={{ textAlign: "center", marginBottom: "28px" }}>
-            <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "8px" }}>SOCIAL PROOF</div>
-            <h3 style={{ fontSize: isMobile ? "20px" : "24px", fontWeight: "900", color: t.heading, margin: 0, fontFamily: "Georgia,serif" }}>Así se ve tu marca en 10AMPRO</h3>
-            <p style={{ color: t.subtle, fontSize: "12px", marginTop: "8px", letterSpacing: "1px" }}>IFrame visible durante el 100% del episodio · Casos reales</p>
+            <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "8px" }}>{L.socialProof}</div>
+            <h3 style={{ fontSize: isMobile ? "20px" : "24px", fontWeight: "900", color: t.heading, margin: 0, fontFamily: "Georgia,serif" }}>{L.brandLooks}</h3>
+            <p style={{ color: t.subtle, fontSize: "12px", marginTop: "8px", letterSpacing: "1px" }}>{L.iframeVisible}</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "16px" }}>
             {sponsors.map((s, i) => (
@@ -467,7 +538,7 @@ export default function SponsorshipSection() {
                     <div style={{ width: 0, height: 0, borderTop: "10px solid transparent", borderBottom: "10px solid transparent", borderLeft: "16px solid white", marginLeft: "4px" }} />
                   </div>
                   <div style={{ position: "absolute", bottom: "10px", left: "10px", background: "rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "4px", padding: "4px 10px", fontSize: "10px", color: "#fff", letterSpacing: "1px" }}>
-                    {s.episode} · Ver episodio ↗
+                    {s.episode} · {L.watchEp}
                   </div>
                 </a>
                 <div style={{ padding: "14px 18px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -484,14 +555,14 @@ export default function SponsorshipSection() {
           {/* Testimonials */}
           <div style={{ marginTop: "32px" }}>
             <div style={{ textAlign: "center", marginBottom: "20px" }}>
-              <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "6px" }}>LO QUE DICE LA AUDIENCIA</div>
-              <p style={{ color: t.subtle, fontSize: "12px", letterSpacing: "1px", margin: 0 }}>Suscriptores de pago · Substack</p>
+              <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "6px" }}>{L.audienceSays}</div>
+              <p style={{ color: t.subtle, fontSize: "12px", letterSpacing: "1px", margin: 0 }}>{L.paidSubs}</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: "14px" }}>
               {[
-                { name: "Felipe Castrillón", badge: "Paid Subscriber · Substack", quote: "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación." },
-                { name: "Juan D", badge: "Paid Subscriber · Substack", quote: "Gracias por aportar a una mejor dieta mental en un mundo hiperconectado para compartir mayormente basura. Como emprendedor, agradecido por el valor recibido y me alegro de contribuir a esta generación de valor que promueven." },
-                { name: "Jose Cardenas", badge: "Paid Subscriber · Substack", quote: "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest." },
+                { name: "Felipe Castrillón", badge: "Paid Subscriber · Substack", quote: L.testimonials[0] },
+                { name: "Juan D", badge: "Paid Subscriber · Substack", quote: L.testimonials[1] },
+                { name: "Jose Cardenas", badge: "Paid Subscriber · Substack", quote: L.testimonials[2] },
               ].map((tst, i) => (
                 <div key={i} style={{ background: t.testimonialBg, border: `1px solid ${t.testimonialBorder}`, borderRadius: "10px", padding: "22px 20px", display: "flex", flexDirection: "column", gap: "14px" }}>
                   <div style={{ fontSize: "22px", color: `${t.green}44` }}>"</div>
@@ -507,17 +578,17 @@ export default function SponsorshipSection() {
         </div>
 
         {/* ── SPONSOR LOGIN ── */}
-        <SponsorLogin />
+        <SponsorLogin L={L} />
 
         {/* ── CTA ── */}
         <div style={{ textAlign: "center" }}>
           <a href="https://forms.gle/SuszJCtsQE7mF6mPA" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <button style={{ background: t.ctaGrad, color: t.accent, border: `1px solid ${t.accent}44`, padding: "16px 52px", fontSize: "12px", fontWeight: "900", letterSpacing: "4px", borderRadius: "6px", cursor: "pointer", fontFamily: "'Courier New',monospace" }}>
-              QUIERO SER PATROCINADOR →
+              {L.cta}
             </button>
           </a>
           <div style={{ color: t.footerText, fontSize: "11px", marginTop: "16px", letterSpacing: "1px" }}>
-            10AMPRO · Innovación, Tecnología y Negocios para LATAM · 2026 · www.10am.pro
+            {L.footer}
           </div>
         </div>
 
