@@ -38,6 +38,25 @@ const I18N = {
       "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest.",
     ],
     cta: "QUIERO SER PATROCINADOR →", footer: "10AMPRO · Innovación, Tecnología y Negocios para LATAM · 2026 · www.10am.pro",
+    demoTag: "👥 AUDIENCIA", demoSub: "quién te escucha · YouTube Studio + Substack",
+    demoKpis: [
+      { v: "78%", l: "MAYORES DE 35", sub: "poder adquisitivo real" },
+      { v: "74%", l: "COLOMBIA", sub: "+ USA, España, México" },
+      { v: "32.8%", l: "OPEN RATE EMAIL", sub: "promedio 30 días · Substack" },
+      { v: "56%", l: "WATCH TIME SUSCRITOS", sub: "audiencia fiel, no de paso" },
+    ],
+    ageTitle: "EDAD", ageSrc: "YouTube · lifetime",
+    geoTitle: "PAÍS", geoSrc: "YouTube views · Substack subs", geoYt: "YT", geoSs: "Substack",
+    behaviorTitle: "CÓMO CONSUMEN", behaviorSrc: "YouTube · lifetime",
+    behavior: [
+      { l: "Móvil", v: 56.4 }, { l: "TV", v: 20.7 }, { l: "Computador", v: 19.4 }, { l: "Tablet", v: 3.6 },
+    ],
+    behaviorNotes: [
+      "Recurrentes + casuales: 39.8% de la audiencia mensual",
+      "8.2% con campana activada (2.1K) · típico YouTube 5–20%",
+      "Substack: 8,097 seguidores en 75 países",
+    ],
+    demoFoot: "Perfil: profesional LATAM de 25–54, decisor, con capital para invertir. No es tráfico — es una comunidad que paga por confianza.",
   },
   en: {
     sponsorArea: "🔒 Sponsor Area", sponsorAccess: "🔒 Sponsor Access", user: "Username", password: "Password",
@@ -75,6 +94,25 @@ const I18N = {
       "I support you because my \"younger self\" would have loved to be like you when I grew up... and also because your episodes are the best way to learn how to invest.",
     ],
     cta: "I WANT TO SPONSOR →", footer: "10AMPRO · Innovation, Technology & Business for LATAM · 2026 · www.10am.pro",
+    demoTag: "👥 AUDIENCE", demoSub: "who listens · YouTube Studio + Substack",
+    demoKpis: [
+      { v: "78%", l: "AGED 35+", sub: "real purchasing power" },
+      { v: "74%", l: "COLOMBIA", sub: "+ USA, Spain, Mexico" },
+      { v: "32.8%", l: "EMAIL OPEN RATE", sub: "30-day average · Substack" },
+      { v: "56%", l: "SUBSCRIBER WATCH TIME", sub: "loyal, not drive-by" },
+    ],
+    ageTitle: "AGE", ageSrc: "YouTube · lifetime",
+    geoTitle: "COUNTRY", geoSrc: "YouTube views · Substack subs", geoYt: "YT", geoSs: "Substack",
+    behaviorTitle: "HOW THEY WATCH", behaviorSrc: "YouTube · lifetime",
+    behavior: [
+      { l: "Mobile", v: 56.4 }, { l: "TV", v: 20.7 }, { l: "Computer", v: 19.4 }, { l: "Tablet", v: 3.6 },
+    ],
+    behaviorNotes: [
+      "Regular + casual viewers: 39.8% of monthly audience",
+      "8.2% with bell on (2.1K) · YouTube typical 5–20%",
+      "Substack: 8,097 followers across 75 countries",
+    ],
+    demoFoot: "Profile: LATAM professionals aged 25–54, decision-makers with capital to invest. Not traffic — a community that pays for trust.",
   },
 };
 
@@ -291,6 +329,15 @@ export default function SponsorshipSection() {
 
   const px = isMobile ? 16 : 40;
 
+  const ageData = [
+    { l: "18–24", v: 2.3 }, { l: "25–34", v: 19.6 }, { l: "35–44", v: 28.2 },
+    { l: "45–54", v: 24.7 }, { l: "55–64", v: 14.4 }, { l: "65+", v: 10.8 },
+  ];
+  const geoData = [
+    { l: "Colombia", yt: 72.4, ss: 74 }, { l: "USA", yt: 9.1, ss: 7 },
+    { l: "España", yt: 2.9, ss: 3 }, { l: "México", yt: 1.0, ss: 3 }, { l: "Canadá", yt: 0.7, ss: 1 },
+  ];
+
   return (
     <div style={{ background: t.bg, minHeight: "100vh", fontFamily: "'Courier New', monospace", color: t.text, paddingBottom: "60px", transition: "background 0.3s, color 0.3s" }}>
       <style dangerouslySetInnerHTML={{ __html: "html,body{margin:0;padding:0;background:#000}" }} />
@@ -447,6 +494,85 @@ export default function SponsorshipSection() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── BLOQUE 3: AUDIENCIA / DEMOGRAFÍA ── */}
+        <div style={{ marginBottom: "48px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
+            <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700" }}>{L.demoTag}</div>
+            <div style={{ flex: 1, height: "1px", background: t.border }} />
+            <div style={{ fontSize: "10px", color: t.subtle }}>{L.demoSub}</div>
+          </div>
+          <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
+            {/* KPI row */}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", borderBottom: `1px solid ${t.border}` }}>
+              {L.demoKpis.map((k, i) => (
+                <div key={k.l} style={{ padding: "18px 16px", textAlign: "center", borderRight: (!isMobile && i < 3) || (isMobile && i % 2 === 0) ? `1px solid ${t.border}` : "none", borderBottom: isMobile && i < 2 ? `1px solid ${t.border}` : "none" }}>
+                  <div style={{ fontSize: "24px", fontWeight: "900", color: t.accent }}>{k.v}</div>
+                  <div style={{ fontSize: "9px", color: t.heading, letterSpacing: "2px", fontWeight: "700", marginTop: "4px" }}>{k.l}</div>
+                  <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{k.sub}</div>
+                </div>
+              ))}
+            </div>
+            {/* 3 columns */}
+            <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 0 }}>
+              {/* Age */}
+              <div style={{ padding: "18px 22px", borderRight: isMobile ? "none" : `1px solid ${t.border}`, borderBottom: isMobile ? `1px solid ${t.border}` : "none" }}>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "3px", fontWeight: "700" }}>{L.ageTitle}</div>
+                <div style={{ fontSize: "9px", color: t.subtle, marginBottom: "12px" }}>{L.ageSrc}</div>
+                {ageData.map(a => (
+                  <div key={a.l} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "7px" }}>
+                    <div style={{ width: "40px", fontSize: "11px", color: t.muted, textAlign: "right" }}>{a.l}</div>
+                    <div style={{ flex: 1, background: t.barBg, borderRadius: "2px", height: "9px", overflow: "hidden" }}>
+                      <div style={{ width: `${a.v * 3}%`, maxWidth: "100%", height: "100%", background: a.v >= 19 ? t.accent : `${t.accent}66`, borderRadius: "2px" }} />
+                    </div>
+                    <div style={{ width: "40px", fontSize: "11px", fontWeight: "700", color: darkMode ? "#ccc" : "#333", textAlign: "right" }}>{a.v}%</div>
+                  </div>
+                ))}
+              </div>
+              {/* Geo */}
+              <div style={{ padding: "18px 22px", borderRight: isMobile ? "none" : `1px solid ${t.border}`, borderBottom: isMobile ? `1px solid ${t.border}` : "none" }}>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "3px", fontWeight: "700" }}>{L.geoTitle}</div>
+                <div style={{ fontSize: "9px", color: t.subtle, marginBottom: "12px" }}>{L.geoSrc}</div>
+                {geoData.map(g => (
+                  <div key={g.l} style={{ marginBottom: "9px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", marginBottom: "3px" }}>
+                      <span style={{ color: t.muted }}>{g.l}</span>
+                      <span style={{ fontWeight: "700", color: darkMode ? "#ccc" : "#333" }}>{g.yt}% <span style={{ fontSize: "9px", color: t.subtle, fontWeight: "400" }}>{L.geoYt}</span> · {g.ss}% <span style={{ fontSize: "9px", color: t.subtle, fontWeight: "400" }}>{L.geoSs}</span></span>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                      <div style={{ background: t.barBg, borderRadius: "2px", height: "5px", overflow: "hidden" }}><div style={{ width: `${g.yt}%`, height: "100%", background: "#ff0000", opacity: 0.8 }} /></div>
+                      <div style={{ background: t.barBg, borderRadius: "2px", height: "5px", overflow: "hidden" }}><div style={{ width: `${g.ss}%`, height: "100%", background: "#ff6719", opacity: 0.8 }} /></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Behavior */}
+              <div style={{ padding: "18px 22px" }}>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "3px", fontWeight: "700" }}>{L.behaviorTitle}</div>
+                <div style={{ fontSize: "9px", color: t.subtle, marginBottom: "12px" }}>{L.behaviorSrc}</div>
+                {L.behavior.map(b => (
+                  <div key={b.l} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "7px" }}>
+                    <div style={{ width: "72px", fontSize: "11px", color: t.muted, textAlign: "right" }}>{b.l}</div>
+                    <div style={{ flex: 1, background: t.barBg, borderRadius: "2px", height: "9px", overflow: "hidden" }}>
+                      <div style={{ width: `${b.v}%`, height: "100%", background: t.green, borderRadius: "2px", opacity: 0.85 }} />
+                    </div>
+                    <div style={{ width: "40px", fontSize: "11px", fontWeight: "700", color: darkMode ? "#ccc" : "#333", textAlign: "right" }}>{b.v}%</div>
+                  </div>
+                ))}
+                <div style={{ marginTop: "14px", paddingTop: "12px", borderTop: `1px solid ${t.border}` }}>
+                  {L.behaviorNotes.map((n, i) => (
+                    <div key={i} style={{ display: "flex", gap: "8px", fontSize: "10px", color: t.muted, lineHeight: "1.5", marginBottom: "5px" }}>
+                      <span style={{ color: t.green }}>›</span><span>{n}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div style={{ padding: "14px 28px", borderTop: `1px solid ${t.border}`, fontSize: "12px", color: t.quoteText, fontFamily: "Georgia,serif", fontStyle: "italic", textAlign: "center", lineHeight: "1.6" }}>
+              {L.demoFoot}
             </div>
           </div>
         </div>
