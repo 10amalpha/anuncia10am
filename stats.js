@@ -13,7 +13,7 @@ export const STATS = {
     youtube: 26500,
     spotify: 38919,
     apple: 6000,
-    x: 7103,
+    x: 7452,
     substack: 6725,
   },
 
@@ -27,8 +27,8 @@ export const STATS = {
     // orden = orden visual (descendente por views)
     platforms: [
       { platform: "Instagram", followers: 20401, views: "1.09M",  pct: 53.3, color: "#e1306c" },
-      { platform: "TikTok",    followers: 50100, views: "407.7K", pct: 19.9, color: "#ff4466" },
-      { platform: "X",         followers: 7103,  views: "289.2K", pct: 14.1, color: "#1da1f2" },
+      { platform: "TikTok",    followers: 50300, views: "407.7K", pct: 19.9, color: "#ff4466" },
+      { platform: "X",         followers: 7452,  views: "289.2K", pct: 14.1, color: "#1da1f2" },
       { platform: "YouTube",   followers: 26500, views: "258.6K", pct: 12.6, color: "#ff0000" },
     ],
   },
