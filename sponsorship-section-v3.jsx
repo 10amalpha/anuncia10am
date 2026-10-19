@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
+import { STATS, fmtFollowers, totalAudience, fmtUpdated } from "./stats";
 
 const I18N = {
   es: {
@@ -11,7 +12,7 @@ const I18N = {
     episodesPublished: "EPISODIOS PUBLICADOS", episodesSub: "desde 2021 · sin interrupciones · ver en YouTube ↗",
     podcastWhere: "donde sale el contenido de tu marca", totalAudience: "AUDIENCIA TOTAL", listeners: "oyentes · 93% LATAM",
     epDuration: "DURACIÓN EP.", episodes: "EPISODIOS", perWeek: "1/sem", avgWatch: "AVG WATCH TIME",
-    liveAnalytics: "ver analytics en vivo ↗", shortsReach: "REACH EN CORTOS", totalViews: "views totales · 263 clips",
+    liveAnalytics: "ver analytics en vivo ↗", shortsReach: "REACH EN CORTOS", totalViews: `views totales · ${STATS.shorts.clips} clips`, dataUpdated: "Datos actualizados",
     avgClip: "AVG / CLIP", engRate: "ENG. RATE", totalLikes: "TOTAL LIKES",
     killer1: "Aquí no se venden vistas.", killer2: "Se vende ", killerAccent: "confianza",
     limited: "⏳ DISPONIBILIDAD LIMITADA", only2: "Solo 2 espacios de patrocinio por episodio",
@@ -67,7 +68,7 @@ const I18N = {
     episodesPublished: "EPISODES PUBLISHED", episodesSub: "since 2021 · zero gaps · watch on YouTube ↗",
     podcastWhere: "where your brand's content airs", totalAudience: "TOTAL AUDIENCE", listeners: "listeners · 93% LATAM",
     epDuration: "EP. LENGTH", episodes: "EPISODES", perWeek: "1/week", avgWatch: "AVG WATCH TIME",
-    liveAnalytics: "live analytics ↗", shortsReach: "SHORTS REACH", totalViews: "total views · 263 clips",
+    liveAnalytics: "live analytics ↗", shortsReach: "SHORTS REACH", totalViews: `total views · ${STATS.shorts.clips} clips`, dataUpdated: "Data updated",
     avgClip: "AVG / CLIP", engRate: "ENG. RATE", totalLikes: "TOTAL LIKES",
     killer1: "We don't sell views.", killer2: "We sell ", killerAccent: "trust",
     limited: "⏳ LIMITED AVAILABILITY", only2: "Only 2 sponsorship slots per episode",
@@ -310,22 +311,20 @@ export default function SponsorshipSection() {
     { name: "FastestVPN", desc: L.sponsorDesc[3], episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
   ];
 
-  const fmtSubs = (n) => n >= 1000 ? n.toLocaleString("en-US") + "+" : n + "+";
+  const fmtSubs = fmtFollowers;
 
   const podcastPlatforms = [
-    { platform: "YouTube",        followers: ytSubs ? fmtSubs(ytSubs) : "26,000+", icon: "▶", color: "#ff0000" },
-    { platform: "Spotify",        followers: "38,900+", icon: "♫", color: "#1db954" },
-    { platform: "Apple Podcasts", followers: "6,000+",  icon: "🎧", color: "#a855f7" },
-    { platform: "X",              followers: "7,100+",  icon: "𝕏", color: "#e4e4e7" },
-    { platform: "Substack",       followers: "6,700+",  icon: "✉", color: "#ff6719" },
+    { platform: "YouTube",        followers: fmtSubs(ytSubs || STATS.podcast.youtube), icon: "▶", color: "#ff0000" },
+    { platform: "Spotify",        followers: fmtSubs(STATS.podcast.spotify), icon: "♫", color: "#1db954" },
+    { platform: "Apple Podcasts", followers: fmtSubs(STATS.podcast.apple),   icon: "🎧", color: "#a855f7" },
+    { platform: "X",              followers: fmtSubs(STATS.podcast.x),       icon: "𝕏", color: "#e4e4e7" },
+    { platform: "Substack",       followers: fmtSubs(STATS.podcast.substack), icon: "✉", color: "#ff6719" },
   ];
 
-  const shortsPlatforms = [
-    { platform: "Instagram", followers: "19,900+", views: "1.09M",  pct: 53.3, color: "#e1306c" },
-    { platform: "TikTok",    followers: "50,100+", views: "407.7K", pct: 19.9, color: "#ff4466" },
-    { platform: "X",         followers: "7,100+",  views: "289.2K", pct: 14.1, color: "#1da1f2" },
-    { platform: "YouTube",   followers: ytSubs ? fmtSubs(ytSubs) : "26,000+", views: "258.6K", pct: 12.6,  color: "#ff0000" },
-  ];
+  const shortsPlatforms = STATS.shorts.platforms.map((row) => ({
+    ...row,
+    followers: fmtSubs(row.platform === "YouTube" && ytSubs ? ytSubs : row.followers),
+  }));
 
   const px = isMobile ? 16 : 40;
 
@@ -404,7 +403,7 @@ export default function SponsorshipSection() {
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
-              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>225</div>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>{STATS.episodes}</div>
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>{L.episodesPublished}</div>
                 <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{L.episodesSub}</div>
@@ -425,13 +424,13 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>{L.totalAudience}</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{((ytSubs || 26000) + 38919 + 6000 + 7103 + 6725).toLocaleString()}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.listeners}</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.accent }}>{totalAudience(ytSubs).toLocaleString("en-US")}+ <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.listeners}</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
                   { v: "1–1.5h", l: L.epDuration },
                   { v: L.perWeek, l: L.episodes },
-                  { v: "23:23", l: L.avgWatch },
+                  { v: STATS.avgWatchTime, l: L.avgWatch },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.heading }}>{s.v}</div>
@@ -464,13 +463,13 @@ export default function SponsorshipSection() {
             <div style={{ padding: "20px 28px", borderBottom: `1px solid ${t.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
               <div>
                 <div style={{ fontSize: "9px", color: t.green, letterSpacing: "4px", fontWeight: "700", marginBottom: "4px" }}>{L.shortsReach}</div>
-                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>2.0M <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.totalViews}</span></div>
+                <div style={{ fontSize: "26px", fontWeight: "900", color: t.green }}>{STATS.shorts.totalViews} <span style={{ fontSize: "13px", color: t.subtle, fontWeight: "400" }}>{L.totalViews}</span></div>
               </div>
               <div style={{ display: "flex", gap: "10px" }}>
                 {[
-                  { v: "11.3K", l: L.avgClip },
-                  { v: "3.5%",  l: L.engRate },
-                  { v: "59.0K", l: L.totalLikes },
+                  { v: STATS.shorts.avgPerClip, l: L.avgClip },
+                  { v: STATS.shorts.engagementRate, l: L.engRate },
+                  { v: STATS.shorts.totalLikes, l: L.totalLikes },
                 ].map(s => (
                   <div key={s.l} style={{ background: t.cardAlt, border: `1px solid ${t.borderLight}`, borderRadius: "8px", padding: "8px 16px", textAlign: "center" }}>
                     <div style={{ fontSize: "18px", fontWeight: "900", color: t.green }}>{s.v}</div>
@@ -715,6 +714,9 @@ export default function SponsorshipSection() {
           </a>
           <div style={{ color: t.footerText, fontSize: "11px", marginTop: "16px", letterSpacing: "1px" }}>
             {L.footer}
+          </div>
+          <div style={{ color: t.footerText, fontSize: "10px", marginTop: "6px", letterSpacing: "1px", opacity: 0.7 }}>
+            {L.dataUpdated}: {fmtUpdated(lang)}
           </div>
         </div>
 
