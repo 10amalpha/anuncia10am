@@ -4,13 +4,13 @@
 // Regla: solo editar valores, nunca la forma del objeto. El JSX importa STATS y formatea.
 
 export const STATS = {
-  updatedAt: "2026-10-19",          // YYYY-MM-DD — fecha del último refresh de datos
+  updatedAt: "2026-10-26",          // YYYY-MM-DD — fecha del último refresh de datos
   episodes: 229,                    // episodios largos publicados (uploads ≥ 20 min, sin Shorts)
   avgWatchTime: "23:23",            // YouTube Studio · avg view duration episodios
 
   // Seguidores por plataforma de podcast (enteros). YouTube se sobreescribe en vivo en el cliente.
   podcast: {
-    youtube: 26500,
+    youtube: 26600,
     spotify: 38919,
     apple: 6000,
     x: 7452,
@@ -26,10 +26,10 @@ export const STATS = {
     totalLikes: "59.0K",
     // orden = orden visual (descendente por views)
     platforms: [
-      { platform: "Instagram", followers: 20401, views: "1.09M",  pct: 53.3, color: "#e1306c" },
+      { platform: "Instagram", followers: 20421, views: "1.09M",  pct: 53.3, color: "#e1306c" },
       { platform: "TikTok",    followers: 50300, views: "407.7K", pct: 19.9, color: "#ff4466" },
       { platform: "X",         followers: 7452,  views: "289.2K", pct: 14.1, color: "#1da1f2" },
-      { platform: "YouTube",   followers: 26500, views: "258.6K", pct: 12.6, color: "#ff0000" },
+      { platform: "YouTube",   followers: 26600, views: "258.6K", pct: 12.6, color: "#ff0000" },
     ],
   },
 };
