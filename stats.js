@@ -17,21 +17,22 @@ export const STATS = {
     substack: 6725,
   },
 
-  // Cortos — totales calculados desde la hoja "Gordo clips 10ampro" (YT/IG/X en vivo; TikTok = dashboard jun-2026)
+  // Cortos — totales calculados desde la hoja "Gordo clips 10ampro" (YT/IG/X/TikTok en vivo, solo cuentas @10ampro)
   shorts: {
-    totalViews: "3.0M",
+    totalViews: "3.4M",
     clips: 366,
-    avgPerClip: "8.2K",
+    avgPerClip: "9.4K",
     engagementRate: "4.0%",
-    totalLikes: "101.2K",
+    totalLikes: "114.8K",
     // orden = orden visual (descendente por views)
     platforms: [
-      { platform: "Instagram", followers: 20779, views: "1.67M",  pct: 55.4, color: "#e1306c" },
-      { platform: "X",         followers: 7589,  views: "578.7K", pct: 19.2, color: "#1da1f2" },
-      { platform: "TikTok",    followers: 50700, views: "407.7K", pct: 13.5, color: "#ff4466" },
-      { platform: "YouTube",   followers: 26700, views: "359.7K", pct: 11.9, color: "#ff0000" },
+      { platform: "Instagram", followers: 20779, views: "1.67M",  pct: 48.8, color: "#e1306c" },
+      { platform: "TikTok",    followers: 50700, views: "813.6K", pct: 23.8, color: "#ff4466" },
+      { platform: "X",         followers: 7589,  views: "578.7K", pct: 16.9, color: "#1da1f2" },
+      { platform: "YouTube",   followers: 26700, views: "359.7K", pct: 10.5, color: "#ff0000" },
     ],
   },
+
 };
 
 // 26500 → "26,500+"
