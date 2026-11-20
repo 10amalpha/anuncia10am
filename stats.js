@@ -17,19 +17,19 @@ export const STATS = {
     substack: 6725,
   },
 
-  // Cortos — totales del dashboard https://10ampro-shorts-analytics.vercel.app/
+  // Cortos — totales calculados desde la hoja "Gordo clips 10ampro" (YT/IG/X en vivo; TikTok = dashboard jun-2026)
   shorts: {
-    totalViews: "2.0M",
-    clips: 263,
-    avgPerClip: "11.3K",
-    engagementRate: "3.5%",
-    totalLikes: "59.0K",
+    totalViews: "3.2M",
+    clips: 366,
+    avgPerClip: "8.8K",
+    engagementRate: "3.8%",
+    totalLikes: "102.4K",
     // orden = orden visual (descendente por views)
     platforms: [
-      { platform: "Instagram", followers: 20779, views: "1.09M",  pct: 53.3, color: "#e1306c" },
-      { platform: "TikTok",    followers: 50700, views: "407.7K", pct: 19.9, color: "#ff4466" },
-      { platform: "X",         followers: 7589,  views: "289.2K", pct: 14.1, color: "#1da1f2" },
-      { platform: "YouTube",   followers: 26700, views: "258.6K", pct: 12.6, color: "#ff0000" },
+      { platform: "Instagram", followers: 20779, views: "1.67M",  pct: 52.0, color: "#e1306c" },
+      { platform: "X",         followers: 7589,  views: "776.1K", pct: 24.1, color: "#1da1f2" },
+      { platform: "TikTok",    followers: 50700, views: "407.7K", pct: 12.7, color: "#ff4466" },
+      { platform: "YouTube",   followers: 26700, views: "359.7K", pct: 11.2, color: "#ff0000" },
     ],
   },
 };
