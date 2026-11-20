@@ -28,14 +28,17 @@ export const STATS = {
     medianComments: 38,
     engagementRate: "4.1%",       // (likes + comentarios) / views · mediana por episodio
     attentionHours: 1800,         // medianViews × avg watch time 23:23 ≈ 1,793 h
-    // Alcance por episodio en todas las plataformas donde sale el episodio completo.
-    // method "measured" = leído de la plataforma; "estimated" = tasa YouTube (medianViews / suscriptores ≈ 17 %) × seguidores de la plataforma.
+    // Alcance por episodio en todas las plataformas donde sale el episodio completo. method "measured" = leído de la plataforma.
+    // audio: Spotify for Creators export (plays + downloads = Spotify + Apple + otros), 22-oct→19-nov-2026: 19,519 en 29 días ≈ 20,200/mes,
+    //        ÷ 8 episodios largos publicados en ese mes ≈ 2,400 por episodio (incluye escucha de catálogo). ~400 oyentes diarios.
+    // x: X Analytics export 23-ago→19-nov-2026, 19 posts con el episodio completo, mediana 1,091 impresiones.
     perEpisode: {
       youtube: { views: 4600, method: "measured" },
-      x:       { views: 1300, method: "estimated" },   // 7,589 seguidores × 17 %
-      audio:   { views: 7700, method: "estimated" },   // Spotify 38,919 + Apple 6,000 = 44,919 × 17 %
-      total:   13600,
+      x:       { views: 1100, method: "measured" },
+      audio:   { views: 2400, method: "measured" },
+      total:   8100,
       rate:    "17%",
+      audioMonthly: 20200, audioDailyListeners: 400, audioWindow: "22 oct – 19 nov 2026", xSample: 19,
     },
     last12m: { episodes: 57, views: 365149, hoursPublished: 79, attentionHours: 142305, engagementRate: "4.3%" },
     // últimos 24 episodios (orden cronológico): [fecha, etiqueta, views YouTube]

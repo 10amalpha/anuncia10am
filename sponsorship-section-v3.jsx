@@ -59,7 +59,7 @@ const I18N = {
     ],
     demoFoot: "Perfil: profesional LATAM de 25–54, decisor, con capital para invertir. No es tráfico — es una comunidad que paga por confianza.",
     // ── Entrega por episodio ──
-    epTag: "🎯 LO QUE ENTREGA UN EPISODIO", epSub: "YouTube medido · X, Spotify y Apple extrapolados*",
+    epTag: "🎯 LO QUE ENTREGA UN EPISODIO", epSub: "YouTube Data API · Spotify for Creators · X Analytics",
     epEyebrow: "AUDIENCIA PREMIUM, NO TRÁFICO",
     epHeadline1: "No vendemos un millón de views.", epHeadline2: (n) => `Vendemos ${n} personas que deciden.`,
     epHeadlineSub: "¿1.000 CEOs y emprendedores escuchándote 23 minutos, o un millón de views de 3 segundos? Nosotros ya elegimos.",
@@ -71,15 +71,16 @@ const I18N = {
       { k: "Tu marca",   a: "pre-roll de 6 s que se salta",         b: "logo en pantalla todo el episodio + mención + QR" },
     ],
     epKpis: [
-      { l: "ALCANCE POR EPISODIO", sub: "YouTube medido + X + Spotify/Apple*" },
+      { l: "ALCANCE POR EPISODIO", sub: "YouTube + Spotify/Apple + X · todo medido" },
       { l: "HORAS DE ATENCIÓN", sub: "por episodio en YouTube · views × 23:23" },
       { l: "INTERACCIÓN", sub: "likes + comentarios / views" },
       { l: "EPISODIOS · 12 MESES", sub: "79 horas de contenido original" },
     ],
     epChartTitle: "ÚLTIMOS 24 EPISODIOS", epChartSub: "views YouTube por episodio · línea = mediana", epChartNote: "claro = publicado hace menos de 30 días, aún acumulando",
     epMedian: "mediana", epSpecial: "ESP = episodio especial",
-    epBreak: { youtube: "YouTube", x: "X (episodio completo)", audio: "Spotify + Apple", measured: "medido · mediana últimos 20 eps", estimated: "estimado*" },
-    epEstNote: (rate) => `* Estimado: la tasa de YouTube (vistas por episodio ÷ suscriptores ≈ ${rate}) aplicada a los seguidores de cada plataforma. Se sustituye por la cifra medida en cuanto está disponible.`,
+    epBreak: { youtube: "YouTube", x: "X (episodio completo)", audio: "Spotify + Apple", estimated: "estimado*",
+      sub: { youtube: "views · mediana últimos 20 episodios", audio: (E) => `reproducciones · ${E.audioMonthly.toLocaleString("es-CO")}/mes ÷ episodios publicados`, x: (E) => `impresiones · mediana de ${E.xSample} posts de episodio` } },
+    epEstNote: (E) => `Fuentes: YouTube Data API · Spotify for Creators (reproducciones + descargas, ${E.audioWindow}; ~${E.audioDailyListeners} oyentes diarios) · X Analytics (ago–nov 2026). Audio incluye escucha de catálogo del mes.`,
     epFoot1: "No vendemos CPM.", epFoot2: " Un pre-roll dura 6 segundos. Aquí tu logo acompaña una conversación de una hora con una audiencia que se queda 23 minutos en promedio: cada episodio son ~1.800 horas de atención de decisores — el equivalente a 75 días continuos de un ejecutivo mirando tu marca. En 12 meses: 142.000 horas, 16 años de atención acumulada.",
     // ── Top contenido ──
     topTag: "🏆 TECHO DE ALCANCE", topSub: "lo que pasa cuando un tema pega",
@@ -143,7 +144,7 @@ const I18N = {
     ],
     demoFoot: "Profile: LATAM professionals aged 25–54, decision-makers with capital to invest. Not traffic — a community that pays for trust.",
     // ── Per-episode delivery ──
-    epTag: "🎯 WHAT ONE EPISODE DELIVERS", epSub: "YouTube measured · X, Spotify and Apple extrapolated*",
+    epTag: "🎯 WHAT ONE EPISODE DELIVERS", epSub: "YouTube Data API · Spotify for Creators · X Analytics",
     epEyebrow: "PREMIUM AUDIENCE, NOT TRAFFIC",
     epHeadline1: "We don't sell a million views.", epHeadline2: (n) => `We sell ${n} people who decide.`,
     epHeadlineSub: "1,000 CEOs and founders listening for 23 minutes, or a million 3-second views? We already chose.",
@@ -155,15 +156,16 @@ const I18N = {
       { k: "Your brand", a: "a 6-second pre-roll they skip",        b: "logo on screen the whole episode + mention + QR" },
     ],
     epKpis: [
-      { l: "REACH PER EPISODE", sub: "YouTube measured + X + Spotify/Apple*" },
+      { l: "REACH PER EPISODE", sub: "YouTube + Spotify/Apple + X · all measured" },
       { l: "HOURS OF ATTENTION", sub: "per episode on YouTube · views × 23:23" },
       { l: "INTERACTION", sub: "likes + comments / views" },
       { l: "EPISODES · 12 MONTHS", sub: "79 hours of original content" },
     ],
     epChartTitle: "LAST 24 EPISODES", epChartSub: "YouTube views per episode · line = median", epChartNote: "light = published less than 30 days ago, still accumulating",
     epMedian: "median", epSpecial: "ESP = special episode",
-    epBreak: { youtube: "YouTube", x: "X (full episode)", audio: "Spotify + Apple", measured: "measured · median of last 20 eps", estimated: "estimated*" },
-    epEstNote: (rate) => `* Estimated: YouTube's rate (views per episode ÷ subscribers ≈ ${rate}) applied to each platform's followers. Replaced by the measured figure as soon as it is available.`,
+    epBreak: { youtube: "YouTube", x: "X (full episode)", audio: "Spotify + Apple", estimated: "estimated*",
+      sub: { youtube: "views · median of last 20 episodes", audio: (E) => `plays · ${E.audioMonthly.toLocaleString("en-US")}/month ÷ episodes published`, x: (E) => `impressions · median of ${E.xSample} episode posts` } },
+    epEstNote: (E) => `Sources: YouTube Data API · Spotify for Creators (plays + downloads, ${E.audioWindow}; ~${E.audioDailyListeners} daily listeners) · X Analytics (Aug–Nov 2026). Audio includes catalogue listening within the month.`,
     epFoot1: "We don't sell CPM.", epFoot2: " A pre-roll lasts 6 seconds. Here your logo sits inside an hour-long conversation with an audience that stays 23 minutes on average: each episode is ~1,800 hours of decision-makers' attention — the equivalent of one executive looking at your brand for 75 straight days. Over 12 months: 142,000 hours, 16 years of accumulated attention.",
     // ── Top content ──
     topTag: "🏆 REACH CEILING", topSub: "what happens when a topic lands",
@@ -573,12 +575,12 @@ export default function SponsorshipSection() {
                         <div style={{ width: "4px", height: "30px", borderRadius: "2px", background: color, opacity: 0.85, flexShrink: 0 }} />
                         <div style={{ minWidth: 0 }}>
                           <div style={{ fontSize: "15px", fontWeight: "900", color: t.heading }}>{d.method === "estimated" ? "~" : ""}{d.views.toLocaleString("en-US")} <span style={{ fontSize: "10px", fontWeight: "400", color: t.muted }}>{L.epBreak[k]}</span></div>
-                          <div style={{ fontSize: "9px", color: d.method === "estimated" ? t.subtle : t.green, letterSpacing: "1px" }}>{d.method === "estimated" ? L.epBreak.estimated : L.epBreak.measured}</div>
+                          <div style={{ fontSize: "9px", color: d.method === "estimated" ? t.subtle : t.green, letterSpacing: "1px" }}>{d.method === "estimated" ? L.epBreak.estimated : (typeof L.epBreak.sub[k] === "function" ? L.epBreak.sub[k](E.perEpisode) : L.epBreak.sub[k])}</div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div style={{ fontSize: "9px", color: t.subtle, marginTop: "10px", lineHeight: "1.5" }}>{L.epEstNote(E.perEpisode.rate)}</div>
+                  <div style={{ fontSize: "9px", color: t.subtle, marginTop: "10px", lineHeight: "1.5" }}>{L.epEstNote(E.perEpisode)}</div>
                 </div>
                 {/* Chart */}
                 <div style={{ padding: isMobile ? "18px 16px" : "20px 28px" }}>
