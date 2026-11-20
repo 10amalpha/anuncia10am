@@ -296,6 +296,7 @@ function SponsorLogin({ L }) {
 export default function SponsorshipSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [ytSubs, setYtSubs] = useState(null);
+  const [liveEpisodes, setLiveEpisodes] = useState(null);
   const [darkMode, setDarkMode] = useState(true);
   const [lang, setLang] = useState("es");
   const L = I18N[lang];
@@ -351,6 +352,21 @@ export default function SponsorshipSection() {
       } catch (e) {}
     };
     fetchYtSubs();
+  }, []);
+
+  // Live episode count: growth.10am.pro counts the highest "E###" in the channel's long-form titles (cached 6 h).
+  // Only accepted when it is >= the static value and not absurdly higher, so a bad response can never lower the counter.
+  useEffect(() => {
+    const fetchEpisodes = async () => {
+      try {
+        const res = await fetch("https://growth.10am.pro/api/media-kit-stats");
+        if (!res.ok) return;
+        const data = await res.json();
+        const n = Number(data?.episodes?.count);
+        if (Number.isInteger(n) && n >= STATS.episodes && n <= STATS.episodes + 15) setLiveEpisodes(n);
+      } catch (e) {}
+    };
+    fetchEpisodes();
   }, []);
 
   const tierMeta = [
@@ -461,7 +477,7 @@ export default function SponsorshipSection() {
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <a href="https://www.youtube.com/@10ampro" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", background: t.cardAlt, border: `1px solid ${t.accent}22`, borderRadius: "8px", padding: "12px 28px", cursor: "pointer" }}>
-              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>{STATS.episodes}</div>
+              <div style={{ fontSize: "28px", fontWeight: "900", color: t.accent }}>{liveEpisodes || STATS.episodes}</div>
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontSize: "11px", fontWeight: "700", color: t.heading, letterSpacing: "1px" }}>{L.episodesPublished}</div>
                 <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{L.episodesSub}</div>
