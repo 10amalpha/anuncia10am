@@ -17,6 +17,44 @@ export const STATS = {
     substack: 6725,
   },
 
+  // Entrega por episodio — YouTube Data API, episodios numerados/especiales (≥ 20 min, sin versiones 📱).
+  // Mediana de los últimos 20 episodios con ≥ 30 días publicados. Recalcular mensualmente (ver README).
+  episodeStats: {
+    asOf: "2026-11-20",
+    sampleWindow: "E212–E229 · jun–oct 2026",
+    medianViews: 4600,            // views YouTube por episodio (mediana, 20 eps maduros)
+    avgViews: 6622,
+    medianLikes: 168,
+    medianComments: 38,
+    engagementRate: "4.1%",       // (likes + comentarios) / views · mediana por episodio
+    attentionHours: 1800,         // medianViews × avg watch time 23:23 ≈ 1,793 h
+    last12m: { episodes: 57, views: 365149, hoursPublished: 79, attentionHours: 142305, engagementRate: "4.3%" },
+    // últimos 24 episodios (orden cronológico): [fecha, etiqueta, views YouTube]
+    recent: [
+      ["2026-06-11", "E212", 3427], ["2026-06-12", "ESP", 13257], ["2026-06-18", "E213", 3042], ["2026-06-25", "E214", 4468],
+      ["2026-07-02", "E215", 4643], ["2026-07-09", "E216", 3709], ["2026-07-13", "ESP", 5126], ["2026-07-16", "E217", 4294],
+      ["2026-07-23", "E218", 4556], ["2026-07-30", "E219", 3494], ["2026-08-13", "E220", 3881], ["2026-08-20", "E221", 3586],
+      ["2026-08-27", "E222", 21065], ["2026-09-03", "E223", 2637], ["2026-09-10", "E224", 4927], ["2026-09-17", "E225", 8534],
+      ["2026-09-24", "E226", 12113], ["2026-10-01", "E227", 7546], ["2026-10-08", "E228", 10622], ["2026-10-15", "E229", 7505],
+      ["2026-11-05", "E230", 2874], ["2026-11-12", "E231", 2748], ["2026-11-14", "ESP", 8042], ["2026-11-19", "E232", 2150],
+    ],
+    // top episodios históricos por views YouTube
+    topEpisodes: [
+      { ep: "E64",  guest: "Santiago Botero",          views: 64208, id: "oYLcI_ZeFvQ" },
+      { ep: "E177", guest: "Abelardo De La Espriella", views: 62880, id: "y7fzSK5M5g0" },
+      { ep: "E126", guest: "Santiago Botero",          views: 45985, id: "RjozFTf6Sqk" },
+      { ep: "E99",  guest: "Andrés Felipe Arias",      views: 44382, id: "9Xy3xPoapyw" },
+      { ep: "E59",  guest: "Wilder Zapata",            views: 31737, id: "YF8YzaYunGs" },
+    ],
+    // mejor corto por plataforma (views en esa plataforma)
+    topClips: [
+      { platform: "TikTok",    views: 106200, title: "El espejismo del salario mínimo",            url: "https://www.tiktok.com/@10ampro/video/7593741679954332939" },
+      { platform: "Instagram", views: 62290,  title: "\"Los contrataderos\", el gran problema de Colombia", url: "https://www.instagram.com/reel/DeKITgkNMUf/" },
+      { platform: "X",         views: 18093,  title: "Repartir pobreza: el modelo económico de izquierda", url: "https://x.com/10ampro/status/2066677147335324110" },
+      { platform: "YouTube",   views: 10408,  title: "El espejismo del salario mínimo",            url: "https://youtube.com/shorts/NrBQdZNldGE" },
+    ],
+  },
+
   // Cortos — totales calculados desde la hoja "Gordo clips 10ampro" (YT/IG/X/TikTok en vivo, solo cuentas @10ampro)
   shorts: {
     totalViews: "3.4M",

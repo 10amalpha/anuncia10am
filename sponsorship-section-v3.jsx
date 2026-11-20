@@ -58,6 +58,24 @@ const I18N = {
       "Substack: 8,097 seguidores en 75 países",
     ],
     demoFoot: "Perfil: profesional LATAM de 25–54, decisor, con capital para invertir. No es tráfico — es una comunidad que paga por confianza.",
+    // ── Entrega por episodio ──
+    epTag: "🎯 LO QUE ENTREGA UN EPISODIO", epSub: "YouTube Data API · sin contar Spotify ni Apple",
+    epHeadline1: "¿1.000 CEOs y emprendedores", epHeadline2: "o un millón de views?",
+    epHeadlineSub: "Preferimos lo primero. Cada episodio pone tu marca 60–90 minutos frente a gente que decide, no frente a un scroll.",
+    epKpis: [
+      { l: "VIEWS POR EPISODIO", sub: "mediana · últimos 20 episodios" },
+      { l: "HORAS DE ATENCIÓN", sub: "por episodio · views × 23:23" },
+      { l: "INTERACCIÓN", sub: "likes + comentarios / views" },
+      { l: "EPISODIOS · 12 MESES", sub: "79 horas de contenido original" },
+    ],
+    epChartTitle: "ÚLTIMOS 24 EPISODIOS", epChartSub: "views YouTube por episodio · línea = mediana", epChartNote: "claro = publicado hace menos de 30 días, aún acumulando",
+    epMedian: "mediana", epSpecial: "ESP = episodio especial",
+    epFoot1: "No vendemos CPM.", epFoot2: " Un pre-roll dura 6 segundos. Aquí tu logo acompaña una conversación de una hora con una audiencia que se queda 23 minutos en promedio: cada episodio son ~1.800 horas de atención de decisores — el equivalente a 75 días continuos de un ejecutivo mirando tu marca. En 12 meses: 142.000 horas, 16 años de atención acumulada.",
+    // ── Top contenido ──
+    topTag: "🏆 TECHO DE ALCANCE", topSub: "lo que pasa cuando un tema pega",
+    topEpisodesTitle: "TOP EPISODIOS · HISTÓRICO", topEpisodesSrc: "views YouTube · episodio completo",
+    topClipsTitle: "MEJOR CORTO POR PLATAFORMA", topClipsSrc: "views en la plataforma · 366 cortos",
+    topViews: "views", topFoot: "Los invitados que mueven la aguja son empresarios, inversionistas y figuras de política económica. Esa es la conversación en la que tu marca entra.",
   },
   en: {
     sponsorArea: "🔒 Sponsor Area", sponsorAccess: "🔒 Sponsor Access", user: "Username", password: "Password",
@@ -114,6 +132,24 @@ const I18N = {
       "Substack: 8,097 followers across 75 countries",
     ],
     demoFoot: "Profile: LATAM professionals aged 25–54, decision-makers with capital to invest. Not traffic — a community that pays for trust.",
+    // ── Per-episode delivery ──
+    epTag: "🎯 WHAT ONE EPISODE DELIVERS", epSub: "YouTube Data API · Spotify and Apple not included",
+    epHeadline1: "1,000 CEOs and founders,", epHeadline2: "or a million views?",
+    epHeadlineSub: "We'd take the first. Every episode puts your brand in front of people who decide for 60–90 minutes — not in front of a scroll.",
+    epKpis: [
+      { l: "VIEWS PER EPISODE", sub: "median · last 20 episodes" },
+      { l: "HOURS OF ATTENTION", sub: "per episode · views × 23:23" },
+      { l: "INTERACTION", sub: "likes + comments / views" },
+      { l: "EPISODES · 12 MONTHS", sub: "79 hours of original content" },
+    ],
+    epChartTitle: "LAST 24 EPISODES", epChartSub: "YouTube views per episode · line = median", epChartNote: "light = published less than 30 days ago, still accumulating",
+    epMedian: "median", epSpecial: "ESP = special episode",
+    epFoot1: "We don't sell CPM.", epFoot2: " A pre-roll lasts 6 seconds. Here your logo sits inside an hour-long conversation with an audience that stays 23 minutes on average: each episode is ~1,800 hours of decision-makers' attention — the equivalent of one executive looking at your brand for 75 straight days. Over 12 months: 142,000 hours, 16 years of accumulated attention.",
+    // ── Top content ──
+    topTag: "🏆 REACH CEILING", topSub: "what happens when a topic lands",
+    topEpisodesTitle: "TOP EPISODES · ALL TIME", topEpisodesSrc: "YouTube views · full episode",
+    topClipsTitle: "BEST CLIP PER PLATFORM", topClipsSrc: "views on that platform · 366 clips",
+    topViews: "views", topFoot: "The guests who move the needle are entrepreneurs, investors and economic-policy figures. That is the conversation your brand joins.",
   },
 };
 
@@ -452,6 +488,90 @@ export default function SponsorshipSection() {
           </div>
         </div>
 
+        {/* ── BLOQUE 1b: ENTREGA POR EPISODIO ── */}
+        {(() => {
+          const E = STATS.episodeStats;
+          const fmtK = (n) => n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "K" : String(n);
+          const ceiling = 14000;
+          const cutoff = new Date(Date.UTC(...E.asOf.split("-").map((v, i) => i === 1 ? Number(v) - 1 : Number(v))) - 30 * 86400000);
+          const kpis = [
+            { v: E.medianViews.toLocaleString("en-US"), ...L.epKpis[0] },
+            { v: `~${E.attentionHours.toLocaleString("en-US")} h`, ...L.epKpis[1] },
+            { v: E.engagementRate, ...L.epKpis[2] },
+            { v: String(E.last12m.episodes), ...L.epKpis[3] },
+          ];
+          return (
+            <div style={{ marginBottom: "20px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700" }}>{L.epTag}</div>
+                <div style={{ flex: 1, height: "1px", background: t.border }} />
+                <div style={{ fontSize: "10px", color: t.subtle }}>{L.epSub}</div>
+              </div>
+              <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
+                {/* Headline */}
+                <div style={{ padding: isMobile ? "24px 20px 18px" : "28px 32px 20px", textAlign: "center", borderBottom: `1px solid ${t.border}` }}>
+                  <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: t.heading, margin: "0 0 10px", fontFamily: "Georgia,serif", lineHeight: "1.3" }}>
+                    {L.epHeadline1}<br />{L.epHeadline2}
+                  </h3>
+                  <p style={{ fontSize: "13px", color: t.muted, margin: 0, lineHeight: "1.7", maxWidth: "560px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>{L.epHeadlineSub}</p>
+                </div>
+                {/* KPI row */}
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", borderBottom: `1px solid ${t.border}` }}>
+                  {kpis.map((k, i) => (
+                    <div key={k.l} style={{ padding: "18px 14px", textAlign: "center", borderRight: (!isMobile && i < 3) || (isMobile && i % 2 === 0) ? `1px solid ${t.border}` : "none", borderBottom: isMobile && i < 2 ? `1px solid ${t.border}` : "none" }}>
+                      <div style={{ fontSize: isMobile ? "22px" : "26px", fontWeight: "900", color: t.accent }}>{k.v}</div>
+                      <div style={{ fontSize: "9px", color: t.heading, letterSpacing: "2px", fontWeight: "700", marginTop: "4px" }}>{k.l}</div>
+                      <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{k.sub}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* Chart */}
+                <div style={{ padding: isMobile ? "18px 16px" : "20px 28px" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "6px", marginBottom: "14px" }}>
+                    <div>
+                      <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "3px", fontWeight: "700" }}>{L.epChartTitle}</div>
+                      <div style={{ fontSize: "9px", color: t.subtle }}>{L.epChartSub}</div>
+                    </div>
+                    <div style={{ fontSize: "9px", color: t.subtle }}>{E.sampleWindow}</div>
+                  </div>
+                  <div style={{ position: "relative", height: isMobile ? "120px" : "150px" }}>
+                    {/* median line */}
+                    <div style={{ position: "absolute", left: 0, right: 0, bottom: `${Math.min(E.medianViews, ceiling) / ceiling * 100}%`, borderTop: `1px dashed ${t.accent}`, opacity: 0.7, zIndex: 1 }}>
+                      <span style={{ position: "absolute", left: 0, top: "-15px", fontSize: "9px", color: t.accent, letterSpacing: "1px", background: t.cardAlt, padding: "1px 5px", borderRadius: "3px" }}>{L.epMedian} {fmtK(E.medianViews)}</span>
+                    </div>
+                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", gap: isMobile ? "3px" : "5px" }}>
+                      {E.recent.map(([d, label, v], i) => {
+                        const fresh = new Date(d + "T00:00:00Z") > cutoff;
+                        const capped = v > ceiling;
+                        const h = Math.min(v, ceiling) / ceiling * 100;
+                        return (
+                          <div key={i} title={`${label} · ${d} · ${v.toLocaleString("en-US")} views`} style={{ flex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end", alignItems: "center", minWidth: 0 }}>
+                            {!isMobile && <div style={{ fontSize: "8px", color: capped ? t.accent : t.subtle, marginBottom: "3px", whiteSpace: "nowrap" }}>{fmtK(v)}{capped ? " ▲" : ""}</div>}
+                            <div style={{ width: "100%", height: `${Math.max(h, 2)}%`, background: t.accent, opacity: fresh ? 0.35 : (label === "ESP" ? 0.65 : 0.9), borderRadius: "2px 2px 0 0" }} />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: isMobile ? "3px" : "5px", marginTop: "6px", borderTop: `1px solid ${t.border}`, paddingTop: "6px" }}>
+                    {E.recent.map(([d, label], i) => (
+                      <div key={i} style={{ flex: 1, textAlign: "center", fontSize: "8px", color: t.subtle, minWidth: 0, overflow: "visible", whiteSpace: "nowrap" }}>
+                        {(isMobile ? i % 6 === 0 : i % 2 === 0) ? label.replace("ESP", "★") : ""}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "6px", marginTop: "8px", fontSize: "9px", color: t.subtle }}>
+                    <span>{L.epChartNote}</span><span>★ / {L.epSpecial}</span>
+                  </div>
+                </div>
+                <div style={{ padding: "16px 28px", borderTop: `1px solid ${t.border}`, fontSize: "12px", color: t.quoteText, fontFamily: "Georgia,serif", fontStyle: "italic", textAlign: "center", lineHeight: "1.7" }}>
+                  <span style={{ color: t.heading, fontWeight: "700", fontStyle: "normal" }}>{L.epFoot1}</span>{L.epFoot2}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
         {/* ── BLOQUE 2: SHORTS — reach adicional de distribución ── */}
         <div style={{ marginBottom: "48px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
@@ -575,6 +695,59 @@ export default function SponsorshipSection() {
             </div>
           </div>
         </div>
+
+        {/* ── BLOQUE 3b: TECHO DE ALCANCE — top episodios + mejor corto por plataforma ── */}
+        {(() => {
+          const E = STATS.episodeStats;
+          const fmtK = (n) => (n / 1000).toFixed(1) + "K";
+          const maxEp = E.topEpisodes[0].views;
+          const platColor = { TikTok: "#ff4466", Instagram: "#e1306c", X: "#1da1f2", YouTube: "#ff0000" };
+          return (
+            <div style={{ marginBottom: "48px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
+                <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700" }}>{L.topTag}</div>
+                <div style={{ flex: 1, height: "1px", background: t.border }} />
+                <div style={{ fontSize: "10px", color: t.subtle }}>{L.topSub}</div>
+              </div>
+              <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
+                <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "3fr 2fr", gap: 0 }}>
+                  {/* Top episodes */}
+                  <div style={{ padding: "18px 22px", borderRight: isMobile ? "none" : `1px solid ${t.border}`, borderBottom: isMobile ? `1px solid ${t.border}` : "none" }}>
+                    <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "3px", fontWeight: "700" }}>{L.topEpisodesTitle}</div>
+                    <div style={{ fontSize: "9px", color: t.subtle, marginBottom: "12px" }}>{L.topEpisodesSrc}</div>
+                    {E.topEpisodes.map((e, i) => (
+                      <a key={e.ep} href={`https://youtu.be/${e.id}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", marginBottom: "9px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontSize: "11px", marginBottom: "3px", gap: "8px" }}>
+                          <span style={{ color: t.muted, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}><span style={{ color: t.subtle }}>{i + 1}.</span> <span style={{ color: t.heading, fontWeight: "700" }}>{e.guest}</span> <span style={{ color: t.subtle }}>· {e.ep}</span></span>
+                          <span style={{ fontWeight: "700", color: darkMode ? "#ccc" : "#333", whiteSpace: "nowrap" }}>{fmtK(e.views)} <span style={{ fontSize: "9px", color: t.subtle, fontWeight: "400" }}>{L.topViews}</span></span>
+                        </div>
+                        <div style={{ background: t.barBg, borderRadius: "2px", height: "6px", overflow: "hidden" }}><div style={{ width: `${e.views / maxEp * 100}%`, height: "100%", background: t.accent, opacity: 0.85 }} /></div>
+                      </a>
+                    ))}
+                  </div>
+                  {/* Top clip per platform */}
+                  <div style={{ padding: "18px 22px" }}>
+                    <div style={{ fontSize: "9px", color: t.green, letterSpacing: "3px", fontWeight: "700" }}>{L.topClipsTitle}</div>
+                    <div style={{ fontSize: "9px", color: t.subtle, marginBottom: "12px" }}>{L.topClipsSrc}</div>
+                    {E.topClips.map((c) => (
+                      <a key={c.platform} href={c.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                        <div style={{ width: "6px", height: "28px", borderRadius: "2px", background: platColor[c.platform], opacity: 0.85, flexShrink: 0 }} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: "9px", color: t.subtle, letterSpacing: "2px" }}>{c.platform.toUpperCase()}</div>
+                          <div style={{ fontSize: "11px", color: t.heading, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.title}</div>
+                        </div>
+                        <div style={{ fontSize: "13px", fontWeight: "900", color: t.green, whiteSpace: "nowrap" }}>{fmtK(c.views)}</div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: "14px 28px", borderTop: `1px solid ${t.border}`, fontSize: "12px", color: t.quoteText, fontFamily: "Georgia,serif", fontStyle: "italic", textAlign: "center", lineHeight: "1.6" }}>
+                  {L.topFoot}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* ── KILLER PHRASE ── */}
         <div style={{ textAlign: "center", margin: "48px 0" }}>
