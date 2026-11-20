@@ -28,6 +28,15 @@ export const STATS = {
     medianComments: 38,
     engagementRate: "4.1%",       // (likes + comentarios) / views · mediana por episodio
     attentionHours: 1800,         // medianViews × avg watch time 23:23 ≈ 1,793 h
+    // Alcance por episodio en todas las plataformas donde sale el episodio completo.
+    // method "measured" = leído de la plataforma; "estimated" = tasa YouTube (medianViews / suscriptores ≈ 17 %) × seguidores de la plataforma.
+    perEpisode: {
+      youtube: { views: 4600, method: "measured" },
+      x:       { views: 1300, method: "estimated" },   // 7,589 seguidores × 17 %
+      audio:   { views: 7700, method: "estimated" },   // Spotify 38,919 + Apple 6,000 = 44,919 × 17 %
+      total:   13600,
+      rate:    "17%",
+    },
     last12m: { episodes: 57, views: 365149, hoursPublished: 79, attentionHours: 142305, engagementRate: "4.3%" },
     // últimos 24 episodios (orden cronológico): [fecha, etiqueta, views YouTube]
     recent: [

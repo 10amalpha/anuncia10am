@@ -59,17 +59,27 @@ const I18N = {
     ],
     demoFoot: "Perfil: profesional LATAM de 25–54, decisor, con capital para invertir. No es tráfico — es una comunidad que paga por confianza.",
     // ── Entrega por episodio ──
-    epTag: "🎯 LO QUE ENTREGA UN EPISODIO", epSub: "YouTube Data API · sin contar Spotify ni Apple",
-    epHeadline1: "¿1.000 CEOs y emprendedores", epHeadline2: "o un millón de views?",
-    epHeadlineSub: "Preferimos lo primero. Cada episodio pone tu marca 60–90 minutos frente a gente que decide, no frente a un scroll.",
+    epTag: "🎯 LO QUE ENTREGA UN EPISODIO", epSub: "YouTube medido · X, Spotify y Apple extrapolados*",
+    epEyebrow: "AUDIENCIA PREMIUM, NO TRÁFICO",
+    epHeadline1: "No vendemos un millón de views.", epHeadline2: (n) => `Vendemos ${n} personas que deciden.`,
+    epHeadlineSub: "¿1.000 CEOs y emprendedores escuchándote 23 minutos, o un millón de views de 3 segundos? Nosotros ya elegimos.",
+    epCompareA: "UN MILLÓN DE VIEWS", epCompareB: "UN EPISODIO DE 10AMPRO",
+    epCompare: [
+      { k: "Atención",   a: "3 segundos de scroll",                 b: "23 min promedio en episodios de 60–90 min" },
+      { k: "Quién es",   a: "anónimos, de paso",                    b: "78% mayores de 35 · 74% Colombia · profesionales con capital" },
+      { k: "Relación",   a: "gratis, no vuelve",                    b: "pagan suscripción y vuelven: 56% del tiempo de visualización es de suscriptores" },
+      { k: "Tu marca",   a: "pre-roll de 6 s que se salta",         b: "logo en pantalla todo el episodio + mención + QR" },
+    ],
     epKpis: [
-      { l: "VIEWS POR EPISODIO", sub: "mediana · últimos 20 episodios" },
-      { l: "HORAS DE ATENCIÓN", sub: "por episodio · views × 23:23" },
+      { l: "ALCANCE POR EPISODIO", sub: "YouTube medido + X + Spotify/Apple*" },
+      { l: "HORAS DE ATENCIÓN", sub: "por episodio en YouTube · views × 23:23" },
       { l: "INTERACCIÓN", sub: "likes + comentarios / views" },
       { l: "EPISODIOS · 12 MESES", sub: "79 horas de contenido original" },
     ],
     epChartTitle: "ÚLTIMOS 24 EPISODIOS", epChartSub: "views YouTube por episodio · línea = mediana", epChartNote: "claro = publicado hace menos de 30 días, aún acumulando",
     epMedian: "mediana", epSpecial: "ESP = episodio especial",
+    epBreak: { youtube: "YouTube", x: "X (episodio completo)", audio: "Spotify + Apple", measured: "medido · mediana últimos 20 eps", estimated: "estimado*" },
+    epEstNote: (rate) => `* Estimado: la tasa de YouTube (vistas por episodio ÷ suscriptores ≈ ${rate}) aplicada a los seguidores de cada plataforma. Se sustituye por la cifra medida en cuanto está disponible.`,
     epFoot1: "No vendemos CPM.", epFoot2: " Un pre-roll dura 6 segundos. Aquí tu logo acompaña una conversación de una hora con una audiencia que se queda 23 minutos en promedio: cada episodio son ~1.800 horas de atención de decisores — el equivalente a 75 días continuos de un ejecutivo mirando tu marca. En 12 meses: 142.000 horas, 16 años de atención acumulada.",
     // ── Top contenido ──
     topTag: "🏆 TECHO DE ALCANCE", topSub: "lo que pasa cuando un tema pega",
@@ -133,17 +143,27 @@ const I18N = {
     ],
     demoFoot: "Profile: LATAM professionals aged 25–54, decision-makers with capital to invest. Not traffic — a community that pays for trust.",
     // ── Per-episode delivery ──
-    epTag: "🎯 WHAT ONE EPISODE DELIVERS", epSub: "YouTube Data API · Spotify and Apple not included",
-    epHeadline1: "1,000 CEOs and founders,", epHeadline2: "or a million views?",
-    epHeadlineSub: "We'd take the first. Every episode puts your brand in front of people who decide for 60–90 minutes — not in front of a scroll.",
+    epTag: "🎯 WHAT ONE EPISODE DELIVERS", epSub: "YouTube measured · X, Spotify and Apple extrapolated*",
+    epEyebrow: "PREMIUM AUDIENCE, NOT TRAFFIC",
+    epHeadline1: "We don't sell a million views.", epHeadline2: (n) => `We sell ${n} people who decide.`,
+    epHeadlineSub: "1,000 CEOs and founders listening for 23 minutes, or a million 3-second views? We already chose.",
+    epCompareA: "A MILLION VIEWS", epCompareB: "ONE 10AMPRO EPISODE",
+    epCompare: [
+      { k: "Attention",  a: "a 3-second scroll",                    b: "23 min average on 60–90 min episodes" },
+      { k: "Who",        a: "anonymous, passing by",                b: "78% aged 35+ · 74% Colombia · professionals with capital" },
+      { k: "Relationship", a: "free, never returns",                b: "they pay to subscribe and come back: 56% of watch time is subscribers" },
+      { k: "Your brand", a: "a 6-second pre-roll they skip",        b: "logo on screen the whole episode + mention + QR" },
+    ],
     epKpis: [
-      { l: "VIEWS PER EPISODE", sub: "median · last 20 episodes" },
-      { l: "HOURS OF ATTENTION", sub: "per episode · views × 23:23" },
+      { l: "REACH PER EPISODE", sub: "YouTube measured + X + Spotify/Apple*" },
+      { l: "HOURS OF ATTENTION", sub: "per episode on YouTube · views × 23:23" },
       { l: "INTERACTION", sub: "likes + comments / views" },
       { l: "EPISODES · 12 MONTHS", sub: "79 hours of original content" },
     ],
     epChartTitle: "LAST 24 EPISODES", epChartSub: "YouTube views per episode · line = median", epChartNote: "light = published less than 30 days ago, still accumulating",
     epMedian: "median", epSpecial: "ESP = special episode",
+    epBreak: { youtube: "YouTube", x: "X (full episode)", audio: "Spotify + Apple", measured: "measured · median of last 20 eps", estimated: "estimated*" },
+    epEstNote: (rate) => `* Estimated: YouTube's rate (views per episode ÷ subscribers ≈ ${rate}) applied to each platform's followers. Replaced by the measured figure as soon as it is available.`,
     epFoot1: "We don't sell CPM.", epFoot2: " A pre-roll lasts 6 seconds. Here your logo sits inside an hour-long conversation with an audience that stays 23 minutes on average: each episode is ~1,800 hours of decision-makers' attention — the equivalent of one executive looking at your brand for 75 straight days. Over 12 months: 142,000 hours, 16 years of accumulated attention.",
     // ── Top content ──
     topTag: "🏆 REACH CEILING", topSub: "what happens when a topic lands",
@@ -495,7 +515,7 @@ export default function SponsorshipSection() {
           const ceiling = 14000;
           const cutoff = new Date(Date.UTC(...E.asOf.split("-").map((v, i) => i === 1 ? Number(v) - 1 : Number(v))) - 30 * 86400000);
           const kpis = [
-            { v: E.medianViews.toLocaleString("en-US"), ...L.epKpis[0] },
+            { v: `~${E.perEpisode.total.toLocaleString("en-US")}`, ...L.epKpis[0] },
             { v: `~${E.attentionHours.toLocaleString("en-US")} h`, ...L.epKpis[1] },
             { v: E.engagementRate, ...L.epKpis[2] },
             { v: String(E.last12m.episodes), ...L.epKpis[3] },
@@ -509,11 +529,27 @@ export default function SponsorshipSection() {
               </div>
               <div style={{ background: t.podcastGrad, border: `1px solid ${t.podcastBorder}`, borderRadius: "14px", overflow: "hidden" }}>
                 {/* Headline */}
-                <div style={{ padding: isMobile ? "24px 20px 18px" : "28px 32px 20px", textAlign: "center", borderBottom: `1px solid ${t.border}` }}>
+                <div style={{ padding: isMobile ? "24px 20px 18px" : "28px 32px 22px", textAlign: "center", borderBottom: `1px solid ${t.border}` }}>
+                  <div style={{ fontSize: "9px", color: t.accent, letterSpacing: "4px", fontWeight: "700", marginBottom: "12px" }}>{L.epEyebrow}</div>
                   <h3 style={{ fontSize: isMobile ? "20px" : "26px", fontWeight: "900", color: t.heading, margin: "0 0 10px", fontFamily: "Georgia,serif", lineHeight: "1.3" }}>
-                    {L.epHeadline1}<br />{L.epHeadline2}
+                    {L.epHeadline1}<br /><span style={{ color: t.accent }}>{L.epHeadline2("~" + E.perEpisode.total.toLocaleString(lang === "en" ? "en-US" : "es-CO"))}</span>
                   </h3>
-                  <p style={{ fontSize: "13px", color: t.muted, margin: 0, lineHeight: "1.7", maxWidth: "560px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>{L.epHeadlineSub}</p>
+                  <p style={{ fontSize: "13px", color: t.muted, margin: "0 0 22px", lineHeight: "1.7", maxWidth: "560px", marginLeft: "auto", marginRight: "auto", fontFamily: "Georgia,serif", fontStyle: "italic" }}>{L.epHeadlineSub}</p>
+                  {/* Comparison */}
+                  <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "left", border: `1px solid ${t.borderLight}`, borderRadius: "10px", overflow: "hidden" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "110px 1fr 1.6fr", background: t.cardAlt, borderBottom: `1px solid ${t.border}` }}>
+                      {!isMobile && <div />}
+                      <div style={{ padding: "10px 14px", fontSize: "9px", letterSpacing: "2px", fontWeight: "700", color: t.subtle }}>{L.epCompareA}</div>
+                      <div style={{ padding: "10px 14px", fontSize: "9px", letterSpacing: "2px", fontWeight: "700", color: t.accent, borderLeft: `1px solid ${t.border}` }}>{L.epCompareB}</div>
+                    </div>
+                    {L.epCompare.map((row, i) => (
+                      <div key={row.k} style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "110px 1fr 1.6fr", borderBottom: i < L.epCompare.length - 1 ? `1px solid ${t.border}` : "none" }}>
+                        {!isMobile && <div style={{ padding: "11px 14px", fontSize: "10px", letterSpacing: "1px", fontWeight: "700", color: t.heading, borderRight: `1px solid ${t.border}` }}>{row.k.toUpperCase()}</div>}
+                        <div style={{ padding: "11px 14px", fontSize: "11px", color: t.subtle, lineHeight: "1.5", textDecoration: "line-through", textDecorationColor: `${t.red}88` }}>{isMobile && <div style={{ fontSize: "8px", letterSpacing: "1px", color: t.muted, marginBottom: "3px", textDecoration: "none" }}>{row.k.toUpperCase()}</div>}{row.a}</div>
+                        <div style={{ padding: "11px 14px", fontSize: "11px", color: t.text, lineHeight: "1.5", borderLeft: `1px solid ${t.border}`, background: `${t.accent}08` }}><span style={{ color: t.accent }}>✓</span> {row.b}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 {/* KPI row */}
                 <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4,1fr)", borderBottom: `1px solid ${t.border}` }}>
@@ -524,6 +560,25 @@ export default function SponsorshipSection() {
                       <div style={{ fontSize: "10px", color: t.subtle, marginTop: "2px" }}>{k.sub}</div>
                     </div>
                   ))}
+                </div>
+                {/* Per-episode breakdown */}
+                <div style={{ padding: isMobile ? "14px 16px" : "14px 28px", borderBottom: `1px solid ${t.border}`, background: t.cardAlt }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3,1fr)", gap: isMobile ? "8px" : "14px" }}>
+                    {[
+                      { k: "youtube", d: E.perEpisode.youtube, color: "#ff0000" },
+                      { k: "audio",   d: E.perEpisode.audio,   color: "#1db954" },
+                      { k: "x",       d: E.perEpisode.x,       color: "#e4e4e7" },
+                    ].map(({ k, d, color }) => (
+                      <div key={k} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <div style={{ width: "4px", height: "30px", borderRadius: "2px", background: color, opacity: 0.85, flexShrink: 0 }} />
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontSize: "15px", fontWeight: "900", color: t.heading }}>{d.method === "estimated" ? "~" : ""}{d.views.toLocaleString("en-US")} <span style={{ fontSize: "10px", fontWeight: "400", color: t.muted }}>{L.epBreak[k]}</span></div>
+                          <div style={{ fontSize: "9px", color: d.method === "estimated" ? t.subtle : t.green, letterSpacing: "1px" }}>{d.method === "estimated" ? L.epBreak.estimated : L.epBreak.measured}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: "9px", color: t.subtle, marginTop: "10px", lineHeight: "1.5" }}>{L.epEstNote(E.perEpisode.rate)}</div>
                 </div>
                 {/* Chart */}
                 <div style={{ padding: isMobile ? "18px 16px" : "20px 28px" }}>
