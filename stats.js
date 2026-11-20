@@ -4,7 +4,7 @@
 // Regla: solo editar valores, nunca la forma del objeto. El JSX importa STATS y formatea.
 
 export const STATS = {
-  updatedAt: "2026-11-19",          // YYYY-MM-DD — fecha del último refresh de datos
+  updatedAt: "2026-11-20",          // YYYY-MM-DD — fecha del último refresh de datos
   episodes: 232,                    // episodios largos publicados (uploads ≥ 20 min, sin Shorts)
   avgWatchTime: "23:23",            // YouTube Studio · avg view duration episodios
 
