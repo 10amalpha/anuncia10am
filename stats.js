@@ -4,7 +4,7 @@
 // Regla: solo editar valores, nunca la forma del objeto. El JSX importa STATS y formatea.
 
 export const STATS = {
-  updatedAt: "2026-11-20",          // YYYY-MM-DD — fecha del último refresh de datos
+  updatedAt: "2026-11-23",          // YYYY-MM-DD — fecha del último refresh de datos
   episodes: 232,                    // episodios largos publicados (uploads ≥ 20 min, sin Shorts)
   avgWatchTime: "23:23",            // YouTube Studio · avg view duration episodios
 
@@ -13,18 +13,18 @@ export const STATS = {
     youtube: 26700,
     spotify: 38919,
     apple: 6000,
-    x: 7589,
+    x: 7601,
     substack: 6725,
   },
 
   // Entrega por episodio — YouTube Data API, episodios numerados/especiales (≥ 20 min, sin versiones 📱).
   // Mediana de los últimos 20 episodios con ≥ 30 días publicados. Recalcular mensualmente (ver README).
   episodeStats: {
-    asOf: "2026-11-20",
+    asOf: "2026-11-23",
     sampleWindow: "E212–E229 · jun–oct 2026",
-    medianViews: 4600,            // views YouTube por episodio (mediana, 20 eps maduros)
-    avgViews: 6622,
-    medianLikes: 168,
+    medianViews: 4606,            // views YouTube por episodio (mediana, 20 eps maduros)
+    avgViews: 6629,
+    medianLikes: 169,
     medianComments: 38,
     engagementRate: "4.1%",       // (likes + comentarios) / views · mediana por episodio
     attentionHours: 1800,         // medianViews × avg watch time 23:23 ≈ 1,793 h
@@ -33,37 +33,37 @@ export const STATS = {
     //        ÷ 8 episodios largos publicados en ese mes ≈ 2,400 por episodio (incluye escucha de catálogo). ~400 oyentes diarios.
     // x: X Analytics export 23-ago→19-nov-2026, 19 posts con el episodio completo, mediana 1,091 impresiones.
     perEpisode: {
-      youtube: { views: 4600, method: "measured" },
+      youtube: { views: 4606, method: "measured" },
       x:       { views: 1100, method: "measured" },
       audio:   { views: 2400, method: "measured" },
       total:   8100,
       rate:    "17%",
       audioMonthly: 20200, audioDailyListeners: 400, audioWindow: "22 oct – 19 nov 2026", xSample: 19,
     },
-    last12m: { episodes: 57, views: 365149, hoursPublished: 79, attentionHours: 142305, engagementRate: "4.3%" },
+    last12m: { episodes: 56, views: 363674, hoursPublished: 78, attentionHours: 141730, engagementRate: "4.2%" },
     // últimos 24 episodios (orden cronológico): [fecha, etiqueta, views YouTube]
     recent: [
-      ["2026-06-11", "E212", 3427], ["2026-06-12", "ESP", 13257], ["2026-06-18", "E213", 3042], ["2026-06-25", "E214", 4468],
-      ["2026-07-02", "E215", 4643], ["2026-07-09", "E216", 3709], ["2026-07-13", "ESP", 5126], ["2026-07-16", "E217", 4294],
-      ["2026-07-23", "E218", 4556], ["2026-07-30", "E219", 3494], ["2026-08-13", "E220", 3881], ["2026-08-20", "E221", 3586],
-      ["2026-08-27", "E222", 21065], ["2026-09-03", "E223", 2637], ["2026-09-10", "E224", 4927], ["2026-09-17", "E225", 8534],
-      ["2026-09-24", "E226", 12113], ["2026-10-01", "E227", 7546], ["2026-10-08", "E228", 10622], ["2026-10-15", "E229", 7505],
-      ["2026-11-05", "E230", 2874], ["2026-11-12", "E231", 2748], ["2026-11-14", "ESP", 8042], ["2026-11-19", "E232", 2150],
+      ["2026-06-11", "E212", 3427], ["2026-06-12", "ESP", 13263], ["2026-06-18", "E213", 3045], ["2026-06-25", "E214", 4473],
+      ["2026-07-02", "E215", 4652], ["2026-07-09", "E216", 3711], ["2026-07-13", "ESP", 5126], ["2026-07-16", "E217", 4298],
+      ["2026-07-23", "E218", 4560], ["2026-07-30", "E219", 3499], ["2026-08-13", "E220", 3884], ["2026-08-20", "E221", 3592],
+      ["2026-08-27", "E222", 21116], ["2026-09-03", "E223", 2638], ["2026-09-10", "E224", 4929], ["2026-09-17", "E225", 8541],
+      ["2026-09-24", "E226", 12121], ["2026-10-01", "E227", 7550], ["2026-10-08", "E228", 10631], ["2026-10-15", "E229", 7520],
+      ["2026-11-05", "E230", 2914], ["2026-11-12", "E231", 2908], ["2026-11-14", "ESP", 8356], ["2026-11-19", "E232", 3516],
     ],
     // top episodios históricos por views YouTube
     topEpisodes: [
-      { ep: "E64",  guest: "Santiago Botero",          views: 64208, id: "oYLcI_ZeFvQ" },
-      { ep: "E177", guest: "Abelardo De La Espriella", views: 62880, id: "y7fzSK5M5g0" },
-      { ep: "E126", guest: "Santiago Botero",          views: 45985, id: "RjozFTf6Sqk" },
-      { ep: "E99",  guest: "Andrés Felipe Arias",      views: 44382, id: "9Xy3xPoapyw" },
-      { ep: "E59",  guest: "Wilder Zapata",            views: 31737, id: "YF8YzaYunGs" },
+      { ep: "E64",  guest: "Santiago Botero",          views: 64212, id: "oYLcI_ZeFvQ" },
+      { ep: "E177", guest: "Abelardo De La Espriella", views: 62889, id: "y7fzSK5M5g0" },
+      { ep: "E126", guest: "Santiago Botero",          views: 45987, id: "RjozFTf6Sqk" },
+      { ep: "E99",  guest: "Andrés Felipe Arias",      views: 44394, id: "9Xy3xPoapyw" },
+      { ep: "E59",  guest: "Wilder Zapata",            views: 31740, id: "YF8YzaYunGs" },
     ],
     // mejor corto por plataforma (views en esa plataforma)
     topClips: [
       { platform: "TikTok",    views: 106200, title: "El espejismo del salario mínimo",            url: "https://www.tiktok.com/@10ampro/video/7593741679954332939" },
-      { platform: "Instagram", views: 62290,  title: "\"Los contrataderos\", el gran problema de Colombia", url: "https://www.instagram.com/reel/DeKITgkNMUf/" },
-      { platform: "X",         views: 18093,  title: "Repartir pobreza: el modelo económico de izquierda", url: "https://x.com/10ampro/status/2066677147335324110" },
-      { platform: "YouTube",   views: 10408,  title: "El espejismo del salario mínimo",            url: "https://youtube.com/shorts/NrBQdZNldGE" },
+      { platform: "Instagram", views: 146759, title: "El rol de los empresarios colombianos",            url: "https://www.instagram.com/reel/DTQebHRjUso/" },
+      { platform: "X",         views: 18099,  title: "Repartir pobreza: el modelo económico de izquierda", url: "https://x.com/10ampro/status/2066677147335324110" },
+      { platform: "YouTube",   views: 10411,  title: "El espejismo del salario mínimo",            url: "https://youtube.com/shorts/NrBQdZNldGE" },
     ],
   },
 
@@ -72,14 +72,14 @@ export const STATS = {
     totalViews: "3.4M",
     clips: 366,
     avgPerClip: "9.4K",
-    engagementRate: "4.0%",
-    totalLikes: "114.8K",
+    engagementRate: "4.1%",
+    totalLikes: "116.1K",
     // orden = orden visual (descendente por views)
     platforms: [
-      { platform: "Instagram", followers: 20779, views: "1.67M",  pct: 48.8, color: "#e1306c" },
-      { platform: "TikTok",    followers: 50700, views: "813.6K", pct: 23.8, color: "#ff4466" },
-      { platform: "X",         followers: 7589,  views: "578.7K", pct: 16.9, color: "#1da1f2" },
-      { platform: "YouTube",   followers: 26700, views: "359.7K", pct: 10.5, color: "#ff0000" },
+      { platform: "Instagram", followers: 20797, views: "1.67M",  pct: 48.7, color: "#e1306c" },
+      { platform: "TikTok",    followers: 50700, views: "821.1K", pct: 23.9, color: "#ff4466" },
+      { platform: "X",         followers: 7601,  views: "579.2K", pct: 16.9, color: "#1da1f2" },
+      { platform: "YouTube",   followers: 26700, views: "361.3K", pct: 10.5, color: "#ff0000" },
     ],
   },
 
