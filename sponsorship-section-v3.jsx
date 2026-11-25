@@ -31,7 +31,7 @@ const I18N = {
     ],
     socialProof: "SOCIAL PROOF", brandLooks: "Así se ve tu marca en 10AMPRO", iframeVisible: "IFrame visible durante el 100% del episodio · Casos reales",
     watchEp: "Ver episodio ↗",
-    sponsorDesc: ["Fintech · billetera digital", "Energía · La energía que quieres", "Crypto · DeFi & NFTs wallet", "Tech · VPN · fastestvpn.com/10ampro"],
+    sponsorDesc: ["Fintech · billetera digital", "Energía · La energía que quieres", "Tech · VPN · fastestvpn.com/10ampro"],
     audienceSays: "LO QUE DICE LA AUDIENCIA", paidSubs: "Suscriptores de pago · Substack",
     testimonials: [
       "El contenido que comparten en los podcast es valioso para mi proyecto de retiro. Me ayuda a estructurar decisiones de inversión y planificación.",
@@ -116,7 +116,7 @@ const I18N = {
     ],
     socialProof: "SOCIAL PROOF", brandLooks: "This is how your brand looks on 10AMPRO", iframeVisible: "IFrame visible during 100% of the episode · Real cases",
     watchEp: "Watch episode ↗",
-    sponsorDesc: ["Fintech · digital wallet", "Energy · The energy you want", "Crypto · DeFi & NFTs wallet", "Tech · VPN · fastestvpn.com/10ampro"],
+    sponsorDesc: ["Fintech · digital wallet", "Energy · The energy you want", "Tech · VPN · fastestvpn.com/10ampro"],
     audienceSays: "WHAT THE AUDIENCE SAYS", paidSubs: "Paid subscribers · Substack",
     testimonials: [
       "The content they share on the podcast is valuable for my retirement project. It helps me structure investment and planning decisions.",
@@ -381,8 +381,7 @@ export default function SponsorshipSection() {
   const sponsors = [
     { name: "Wenia",      desc: L.sponsorDesc[0], episode: "E196", img: "/sponsors/wenia.jpg",      url: "https://youtu.be/leDK2mccGWM" },
     { name: "Celsia",     desc: L.sponsorDesc[1], episode: "E177", img: "/sponsors/celsia.jpg",     url: "https://youtu.be/y7fzSK5M5g0" },
-    { name: "Phantom",    desc: L.sponsorDesc[2], episode: "E189", img: "/sponsors/phantom.jpg",    url: "https://youtu.be/" },
-    { name: "FastestVPN", desc: L.sponsorDesc[3], episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
+    { name: "FastestVPN", desc: L.sponsorDesc[2], episode: "E186", img: "/sponsors/fastestvpn.jpg", url: "https://youtu.be/" },
   ];
 
   const fmtSubs = fmtFollowers;
